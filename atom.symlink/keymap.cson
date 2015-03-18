@@ -1,0 +1,44 @@
+# Your keymap
+#
+# Atom keymaps work similarly to stylesheets. Just as stylesheets use selectors
+# to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# '.editor':
+#   'enter': 'editor:newline'
+#
+# '.workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/customizing-atom#customizing-key-bindings
+# * https://atom.io/docs/latest/advanced/keymaps
+
+'.select-list atom-text-editor':
+  'ctrl-k': 'core:move-up'
+  'ctrl-j': 'core:move-down'
+  'ctrl-shift-k': 'core:move-to-top'
+  'ctrl-shift-j': 'core:move-to-bottom'
+
+'atom-panel':
+  'ctrl-k': 'core:move-up'
+  'ctrl-j': 'core:move-down'
+  'ctrl-shift-k': 'core:move-to-top'
+  'ctrl-shift-j': 'core:move-to-bottom'
+
+'atom-text-editor:not(mini).autocomplete-active':
+  'ctrl-k': 'autocomplete-plus:select-previous'
+  'ctrl-j': 'autocomplete-plus:select-next'
+
+'.platform-darwin':
+  'ctrl-cmd-.': 'key-binding-resolver:toggle'
+
+'.platform-darwin atom-text-editor:not([mini])':
+  'ctrl-e': 'editor:move-to-end-of-line'
+  'cmd-.': 'rails-rspec:toggle-spec-file'
