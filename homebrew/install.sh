@@ -13,6 +13,7 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark reattach-to-user-namespace
+brew tap Goles/battery
+brew install grc coreutils spark reattach-to-user-namespace battery
 
 exit 0
