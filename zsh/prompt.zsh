@@ -72,12 +72,11 @@ directory_name() {
 }
 
 export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
-
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="[% NORMAL]%"
-  RPROMPT="%{$fg_bold[cyan]%}${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} %{$reset_color%}"
-  zle reset-prompt
+set_prompt () {
+  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+precmd() {
+  title "zsh" "%m" "%55<...<%~"
+  set_prompt
+}
