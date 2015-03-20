@@ -18,3 +18,11 @@
   'Is expected to':
     'prefix': 'iet'
     'body': "it { is_expected.to $1 }"
+
+'.text.html.ruby':
+  '<% ... %>':
+    'prefix': '%'
+    'body': "<% $1 %>"
+  '<%= ... %>':
+    'prefix': '%='
+    'body': "<%= $1 %>"

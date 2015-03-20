@@ -40,3 +40,5 @@
       "find-and-replace": true
   "file-icons":
     coloured: false
+  "autocomplete-plus": {}
+  "vim-surround": {}
