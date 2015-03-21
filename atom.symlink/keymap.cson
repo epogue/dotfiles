@@ -20,22 +20,6 @@
 # * https://atom.io/docs/latest/customizing-atom#customizing-key-bindings
 # * https://atom.io/docs/latest/advanced/keymaps
 
-'.select-list atom-text-editor':
-  'ctrl-k': 'core:move-up'
-  'ctrl-j': 'core:move-down'
-  'ctrl-shift-k': 'core:move-to-top'
-  'ctrl-shift-j': 'core:move-to-bottom'
-
-'atom-panel':
-  'ctrl-k': 'core:move-up'
-  'ctrl-j': 'core:move-down'
-  'ctrl-shift-k': 'core:move-to-top'
-  'ctrl-shift-j': 'core:move-to-bottom'
-
-'atom-text-editor:not(mini).autocomplete-active':
-  'ctrl-k': 'autocomplete-plus:select-previous'
-  'ctrl-j': 'autocomplete-plus:select-next'
-
 '.platform-darwin':
   'ctrl-cmd-.': 'key-binding-resolver:toggle'
 

@@ -14,6 +14,6 @@ fi
 
 # Install homebrew packages
 brew tap Goles/battery
-brew install grc coreutils spark reattach-to-user-namespace battery
+brew install grc coreutils spark reattach-to-user-namespace battery tmux
 
 exit 0

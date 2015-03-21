@@ -21,6 +21,7 @@
     disabledPackages: [
       "exception-reporting"
       "metrics"
+      "regex-railroad-diagram"
     ]
   "spell-check":
     grammars: [
@@ -40,7 +41,8 @@
       "find-and-replace": true
   "file-icons":
     coloured: false
-  "autocomplete-plus": {}
+  "autocomplete-plus":
+    navigateCompletions: "ctrl-p,ctrl-n"
   "vim-surround": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
