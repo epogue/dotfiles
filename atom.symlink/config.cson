@@ -23,6 +23,12 @@
       "metrics"
       "regex-railroad-diagram"
       "autocomplete-paths"
+      "script"
+      "minimap"
+      "minimap-find-and-replace"
+      "minimap-git-diff"
+      "minimap-highlight-selected"
+      "minimap-selection"
     ]
   "spell-check":
     grammars: [
