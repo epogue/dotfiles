@@ -284,6 +284,12 @@ nnoremap <M-r> :CtrlPTag<cr>
 " Search for visual selection
 vnoremap // y/<C-R>"<CR>
 
+" Secondary escape sequence mapping
+" inoremap jk <esc>
+
+" End tag autocompletion
+inoremap </ </<C-X><C-O>==A
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
