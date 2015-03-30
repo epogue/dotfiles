@@ -68,10 +68,10 @@ set shiftround
 set expandtab
 
 " Code folding
-set foldmethod=syntax
-set foldlevelstart=3
-
-let ruby_fold=1
+" set foldmethod=syntax
+" set foldlevelstart=3
+"
+" let ruby_fold=1
 
 " Set clipboard to sync with system
 set clipboard=unnamed
@@ -85,7 +85,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --ignore .git --nocolor --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -153,7 +153,7 @@ function! MyFugitive()
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
       let mark = '⭠ '  " edit here for cool mark
       let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
+      return strlen(_) ? ( winwidth(0) > 80 ? mark._ : '' ) : ''
     endif
   catch
   endtry
@@ -161,15 +161,15 @@ function! MyFugitive()
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+  return winwidth(0) > 86 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  return winwidth(0) > 86 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  return winwidth(0) > 86 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
@@ -182,7 +182,7 @@ function! MyMode()
         \ &ft == 'unite' ? 'Unite' :
         \ &ft == 'vimfiler' ? 'VimFiler' :
         \ &ft == 'vimshell' ? 'VimShell' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
+        \ winwidth(0) > 70 ? lightline#mode() : ''
 endfunction
 
 function! CtrlPMark()
