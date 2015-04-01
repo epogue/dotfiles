@@ -164,27 +164,20 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
+" Quicker mappings for moving between panes
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
-
-" Ctrl-P tag browser mappings
+" Ctrl-P mappings
 nnoremap <Leader>. :CtrlPTag<cr>
-nnoremap <M-r> :CtrlPTag<cr>
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
 " Search for visual selection
 vnoremap // y/<C-R>"<CR>
-
-" Secondary escape sequence mapping
-inoremap jk <esc>
-" vnoremap jk <esc>
 
 " End tag autocompletion
 inoremap </ </<C-X><C-O><esc>==A
