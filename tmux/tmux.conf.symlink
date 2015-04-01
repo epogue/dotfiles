@@ -12,6 +12,8 @@ bind-key -n C-l select-pane -R
 set-option -g status-fg white
 set-option -g status-bg black
 
+set-option -sg escape-time 0
+
 set-option -g default-terminal "screen-256color"
 set-option -g status-keys "emacs"
 
@@ -39,6 +41,7 @@ bind c new-window -c "#{pane_current_path}"
 # 1-based index
 set-option -g base-index 1
 set-option -g renumber-windows on
+set-option -g pane-base-index 1
 
 # Break a pane off
 bind-key b break-pane -d

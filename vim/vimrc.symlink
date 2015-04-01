@@ -8,6 +8,8 @@ set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
+set scrolloff=5
+set hlsearch
 
 " For ruby text blocks
 runtime! macros/matchit.vim
@@ -18,10 +20,22 @@ if filereadable(expand("~/.dotfiles/vim/vimrc.bundles"))
 endif
 
 syntax enable
-colorscheme heroku-terminal
+colorscheme base16-ocean
+set background=dark
 
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+" FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in MacVim (OK in non-GUI version of Vim)
+if has("gui_macvim")
+  set shell=/bin/zsh\ -l
+endif
+
+" disable left and right scrollbars
+set guioptions-=r guioptions-=L
+
+" Because MacVim runs teensy, tiny fonts
+set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+
+" Set default register to system clipboard
+" set clipboard=unnamed
 
 filetype plugin indent on
 
@@ -67,17 +81,21 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+set ttimeout
+set timeoutlen=1000
+set ttimeoutlen=0
+
+" Relative line numbers
+nnoremap <silent><leader>n :set rnu! rnu? <cr>
+
 " Code folding
 " set foldmethod=syntax
 " set foldlevelstart=3
 "
 " let ruby_fold=1
 
-" Set clipboard to sync with system
-set clipboard=unnamed
-
 " Display extra whitespace
-" set list listchars=tab:»·,trail:·,nbsp:·
+" set list listchars=eol:¬,tab:»·,trail:·,nbsp:·
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -91,6 +109,9 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Speed up CtrlP matching
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
 " bind \ (backward slash) to grep shortcut
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
@@ -103,134 +124,8 @@ nnoremap \ :Ag<SPACE>
 set number
 set numberwidth=5
 
-" Lightline config
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
-
-function! MyModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help' && &readonly ? '⭤' : ''
-endfunction
-
-function! MyFilename()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
-        \ fname =~ '__Gundo\|NERD_tree' ? '' :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ &ft == 'unite' ? unite#get_status_string() :
-        \ &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = '⭠ '  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? ( winwidth(0) > 80 ? mark._ : '' ) : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 86 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 86 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 86 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ &ft == 'unite' ? 'Unite' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ &ft == 'vimshell' ? 'VimShell' :
-        \ winwidth(0) > 70 ? lightline#mode() : ''
-endfunction
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
+" Airline config (a little easier)
+let g:airline_powerline_fonts = 1
 
 " Snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -281,14 +176,18 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 nnoremap <Leader>. :CtrlPTag<cr>
 nnoremap <M-r> :CtrlPTag<cr>
 
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Search for visual selection
 vnoremap // y/<C-R>"<CR>
 
 " Secondary escape sequence mapping
-" inoremap jk <esc>
+inoremap jk <esc>
+" vnoremap jk <esc>
 
 " End tag autocompletion
-inoremap </ </<C-X><C-O>==A
+inoremap </ </<C-X><C-O><esc>==A
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
