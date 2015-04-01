@@ -15,11 +15,8 @@ fi
 # Install homebrew packages
 brew install grc coreutils spark 
 
-# Go vim!
+# Install and link MacVim
 brew install macvim --override-system-vim
-
-# Tmux config
-brew tap Goles/battery
-reattach-to-user-namespace battery tmux
+brew linkapps macvim
 
 exit 0
