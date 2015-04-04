@@ -9,30 +9,33 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set scrolloff=5
-set hlsearch
+set hlsearch      " Highlight searches
 
 " For ruby text blocks
 runtime! macros/matchit.vim
 set runtimepath+=~/.dotfiles/vim/addons
 
 if filereadable(expand("~/.dotfiles/vim/vimrc.bundles"))
-  source ~/.dotfiles/vim/vimrc.bundles
+source ~/.dotfiles/vim/vimrc.bundles
 endif
 
 syntax enable
 colorscheme base16-ocean
 set background=dark
 
+set lazyredraw
+set ttyfast
+
 " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in MacVim (OK in non-GUI version of Vim)
 if has("gui_macvim")
-  set shell=/bin/zsh\ -l
-endif
+set shell=/bin/zsh\ -l
 
 " disable left and right scrollbars
 set guioptions-=r guioptions-=L
 
 " Because MacVim runs teensy, tiny fonts
 set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+endif
 
 " Set default register to system clipboard
 " set clipboard=unnamed
@@ -40,35 +43,35 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 filetype plugin indent on
 
 augroup vimrcEx
-  autocmd!
+autocmd!
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+" When editing a file, always jump to the last known cursor position.
+" Don't do it for commit messages, when the position is invalid, or when
+" inside an event handler (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
 
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+" Set syntax highlighting for specific file types
+autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-  " Enable spellchecking for Markdown
-  autocmd FileType markdown setlocal spell
+" Enable spellchecking for Markdown
+autocmd FileType markdown setlocal spell
 
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+" Automatically wrap at 80 characters for Markdown
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
-  " Automatically wrap at 72 characters and spell check git commit messages
-  autocmd FileType gitcommit setlocal textwidth=72
-  autocmd FileType gitcommit setlocal spell
+" Automatically wrap at 72 characters and spell check git commit messages
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal spell
 
-  " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
+" Allow stylesheets to autocomplete hyphenated words
+autocmd FileType css,scss,sass setlocal iskeyword+=-
 
-  " Autobalance when resized
-  autocmd VimResized * :wincmd =
+" Autobalance when resized
+autocmd VimResized * :wincmd =
 augroup END
 
 " zoom a vim pane, <C-w>= to re-balance
@@ -86,7 +89,10 @@ set timeoutlen=1000
 set ttimeoutlen=0
 
 " Relative line numbers
-nnoremap <silent><leader>n :set rnu! rnu? <cr>
+nnoremap <silent><Leader>n :set rnu! rnu? <cr>
+set relativenumber
+set number
+set numberwidth=5
 
 " Code folding
 " set foldmethod=syntax
@@ -95,18 +101,18 @@ nnoremap <silent><leader>n :set rnu! rnu? <cr>
 " let ruby_fold=1
 
 " Display extra whitespace
-" set list listchars=eol:¬,tab:»·,trail:·,nbsp:·
+set listchars=eol:¬,tab:»·,trail:·,nbsp:·
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" Use Ag over Grep
+set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --ignore .git --nocolor --hidden -g ""'
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+let g:ctrlp_user_command = 'ag %s -l --ignore .git --nocolor --hidden -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
 endif
 
 " Speed up CtrlP matching
@@ -117,12 +123,8 @@ command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 " Make it obvious where 80 characters is
-" set textwidth=80
-" set colorcolumn=+1
-
-" Numbers
-set number
-set numberwidth=5
+set textwidth=80
+set colorcolumn=+1
 
 " Airline config (a little easier)
 let g:airline_powerline_fonts = 1
@@ -156,7 +158,7 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
-nnoremap <leader><leader> <c-^>
+nnoremap <Leader><Leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -172,6 +174,15 @@ nnoremap <C-l> <C-w>l
 
 " Ctrl-P mappings
 nnoremap <Leader>. :CtrlPTag<cr>
+
+" System pasteboard mappings
+nnoremap <Leader>y "*y
+nnoremap <Leader>yy "*Y
+
+nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+
+" Quick write
+nnoremap <Leader>w :w!<CR>
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
