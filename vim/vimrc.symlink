@@ -9,6 +9,7 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set scrolloff=5
+set nowrap
 set hlsearch      " Highlight searches
 
 " For ruby text blocks
@@ -20,8 +21,8 @@ source ~/.dotfiles/vim/vimrc.bundles
 endif
 
 syntax enable
-colorscheme base16-ocean
-set background=dark
+colorscheme solarized
+set background=light
 
 set lazyredraw
 set ttyfast
