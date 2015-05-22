@@ -4,11 +4,17 @@
     invisibles:
       {}
     fontSize: 13
+    lineHeight: 1.4
+    autoIndentOnPaste: true
+    normalizeIndentOnPaste: false
   core:
     ignoredNames: [
+      ".sass-cache"
+      ".codekit-cache"
       ".bundle"
       ".git"
       "log"
+      ".DS_Store"
       "repositories"
       "tmp"
       "vendor"
@@ -29,6 +35,7 @@
       "emmet"
       "regex-railroad-diagram"
       "script"
+      "atom-color-highlight"
     ]
     themes: [
       "one-dark-ui"
@@ -86,3 +93,5 @@
     fontFamily: "Source Sans Pro"
   "base16-syntax":
     scheme: "Isotope"
+  "fuzzy-finder":
+    searchAllPanes: true
