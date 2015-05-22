@@ -1,8 +1,8 @@
 "*":
   editor:
-    showIndentGuide: true
-    fontFamily: "Menlo"
-    invisibles: {}
+    fontFamily: "Input Mono Narrow"
+    invisibles:
+      {}
     fontSize: 13
   core:
     ignoredNames: [
@@ -13,22 +13,26 @@
       "tmp"
       "vendor"
     ]
-    themes: [
-      "one-dark-ui"
-      "one-dark-syntax"
-    ]
     hideGitIgnoredFiles: true
     disabledPackages: [
       "exception-reporting"
       "metrics"
-      "regex-railroad-diagram"
       "autocomplete-paths"
-      "script"
       "minimap"
       "minimap-find-and-replace"
       "minimap-git-diff"
       "minimap-highlight-selected"
       "minimap-selection"
+      "relative-line-numbers"
+      "linter"
+      "linter-eslint"
+      "emmet"
+      "regex-railroad-diagram"
+      "script"
+    ]
+    themes: [
+      "one-dark-ui"
+      "chester-atom-syntax"
     ]
   "spell-check":
     grammars: [
@@ -40,7 +44,8 @@
     showOnStartup: false
   "release-notes":
     viewedVersion: "0.89.0"
-  linter: {}
+  linter:
+    {}
   minimap:
     plugins:
       "git-diff": true
@@ -50,7 +55,34 @@
     coloured: false
   "autocomplete-plus":
     navigateCompletions: "ctrl-p,ctrl-n"
-  "vim-surround": {}
+  "vim-surround":
+    {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
-  "rails-rspec": {}
+    useSmartcaseForSearch: true
+  "rails-rspec":
+    {}
+  "git-projects":
+    rootPath: "/Users/epogue/Projects"
+  "relative-numbers":
+    displayTrueLineNumberOnCurrentLine: true
+  "relative-line-numbers":
+    showNormalLineNumbers: false
+  "one-dark-ui":
+    {}
+  "advanced-new-file":
+    {}
+  "atom-fuzzy-grep":
+    {}
+  "linter-eslint":
+    {}
+  emmet:
+    {}
+  "atom-color-highlight":
+    {}
+  "merge-conflicts":
+    {}
+  "isotope-ui":
+    fontFamily: "Source Sans Pro"
+  "base16-syntax":
+    scheme: "Isotope"

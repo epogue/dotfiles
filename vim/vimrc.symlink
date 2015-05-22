@@ -12,6 +12,9 @@ set scrolloff=5
 set nowrap
 set hlsearch      " Highlight searches
 
+" Add a tree view to netrw
+" let g:netrw_liststyle=3
+
 " For ruby text blocks
 runtime! macros/matchit.vim
 set runtimepath+=~/.dotfiles/vim/addons
@@ -21,8 +24,8 @@ source ~/.dotfiles/vim/vimrc.bundles
 endif
 
 syntax enable
-colorscheme solarized
-set background=light
+colorscheme base16-flat
+set background=dark
 
 set lazyredraw
 set ttyfast
@@ -35,7 +38,8 @@ set shell=/bin/zsh\ -l
 set guioptions-=r guioptions-=L
 
 " Because MacVim runs teensy, tiny fonts
-set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+
+set guifont=InputMonoNarrow:h13
 endif
 
 " Set default register to system clipboard
@@ -73,7 +77,7 @@ autocmd FileType gitcommit setlocal spell
 autocmd FileType css,scss,sass setlocal iskeyword+=-
 
 " Autobalance when resized
-autocmd VimResized * :wincmd =
+" autocmd VimResized * :wincmd =
 augroup END
 
 " zoom a vim pane, <C-w>= to re-balance
@@ -125,8 +129,8 @@ command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+" set textwidth=80
+" set colorcolumn=+1
 
 " Airline config (a little easier)
 let g:airline_powerline_fonts = 1
