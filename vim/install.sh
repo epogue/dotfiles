@@ -1,7 +1,7 @@
 #!/bin/sh
 # Installs vundle and vundle file
 
-if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim -u $HOME/.dotfiles/vim/vimrc.bundles +PluginInstall +PluginClean! +qa
+vim -u $HOME/.dotfiles/vim/vimrc.bundles +PlugInstall +PlugClean! +qa
