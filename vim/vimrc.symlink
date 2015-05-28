@@ -88,9 +88,9 @@ set laststatus=2  " Always display the status line
 set showcmd
 set visualbell
 set backspace=indent,eol,start
-set ttimeout
-set timeoutlen=1000
-set ttimeoutlen=0
+" set ttimeout
+set timeoutlen=500
+" set ttimeoutlen=0
 set hlsearch      " Highlight searches
 set incsearch
 set ignorecase smartcase
@@ -327,9 +327,14 @@ nmap gcc <Plug>CommentaryLine
 " ----------------------------------------------------------------------------
 " vim-fugitive
 " ----------------------------------------------------------------------------
-nmap     <Leader>g :Gstatus<CR>gg<c-n>
-nnoremap <Leader>d :Gdiff<CR>
+nmap     <Leader>gs :Gstatus<CR>gg<c-n>
+nnoremap <Leader>gd :Gdiff<CR>
 
+" ----------------------------------------------------------------------------
+" dash.vim
+" ----------------------------------------------------------------------------
+nmap     <Leader>d <Plug>DashSearch
+ 
 " ----------------------------------------------------------------------------
 " matchit.vim
 " ----------------------------------------------------------------------------
