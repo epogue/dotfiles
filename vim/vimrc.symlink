@@ -49,7 +49,6 @@ if s:darwin
 endif
 
 " Browsing
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 if v:version >= 703
@@ -59,9 +58,13 @@ Plug 'justinmk/vim-gtfo'
 Plug 'duggiefresh/vim-easydir'
 Plug 'vim-scripts/Rename'
 
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-dispatch'
+Plug 'sjl/vitality.vim'
+
 " Other
 Plug 'pbrisbin/vim-mkdir'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
 if s:darwin
   Plug 'tpope/vim-eunuch'
@@ -162,6 +165,12 @@ noremap <C-B> <C-U>
 inoremap <C-s>      <C-O>:update<cr>
 nnoremap <C-s>      :update<cr>
 nnoremap <leader>s  :update<cr>
+
+" Disable CTRL-A on tmux or on screen
+if $TERM =~ 'screen'
+  nnoremap <C-a> <nop>
+  nnoremap <Leader><C-a> <C-a>
+endif
 
 " Quit
 inoremap <C-Q>     <esc>:q<cr>
