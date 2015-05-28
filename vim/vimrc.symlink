@@ -49,6 +49,7 @@ if s:darwin
 endif
 
 " Browsing
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 if v:version >= 703
@@ -60,6 +61,7 @@ Plug 'vim-scripts/Rename'
 
 " Other
 Plug 'pbrisbin/vim-mkdir'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
 if s:darwin
   Plug 'tpope/vim-eunuch'
