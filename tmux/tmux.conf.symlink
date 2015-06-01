@@ -46,7 +46,7 @@ set-option -g mouse-select-pane on
 set-option -g mouse-select-window on
 
 # Other pane sizes
-set-option -g other-pane-width 80
+set-option -g other-pane-width 60
 set-option -g other-pane-height 30
 
 # -------------------------------------------------------------------

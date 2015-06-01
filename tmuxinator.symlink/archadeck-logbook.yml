@@ -25,7 +25,7 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - guard
         - vim
+        - guard
   - server: foreman start
   - logs: tail -f log/development.log
