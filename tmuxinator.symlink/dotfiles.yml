@@ -26,4 +26,4 @@ windows:
       layout: main-vertical
       panes:
         - vim
-        - guard
+        - # empty
