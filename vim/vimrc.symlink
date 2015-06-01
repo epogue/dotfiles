@@ -38,7 +38,7 @@ endif
 Plug 'othree/xml.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-rails',               { 'for': []          }
+Plug 'tpope/vim-rails'
 Plug 'thoughtbot/vim-rspec'
 Plug 'kana/vim-textobj-user'
 Plug 'othree/html5.vim'
@@ -228,6 +228,9 @@ nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 " Search for visual selection
 vnoremap // y/<C-R>"<CR>
+
+" Go to or create file
+map <leader>gf :vsplit <cfile><cr>
 
 " ----------------------------------------------------------------------------
 " <tab> / <s-tab> / <c-v><tab> | super-duper-tab
