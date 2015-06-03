@@ -1,7 +1,7 @@
-# ~/.tmuxinator/archadeck-logbook.yml
+# ~/.tmuxinator/nra-registration.yml
 
-name: archadeck-logbook
-root: ~/Projects/archadeck-logbook
+name: nra-registration
+root: ~/Projects/nra-registration
 
 # Optional tmux socket
 # socket_name: foo

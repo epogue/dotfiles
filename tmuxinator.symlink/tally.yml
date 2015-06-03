@@ -1,7 +1,7 @@
-# ~/.tmuxinator/archadeck-logbook-frontend.yml
+# ~/.tmuxinator/tally.yml
 
-name: archadeck-logbook-frontend
-root: ~/Projects/archadeck-logbook-frontend
+name: tally
+root: ~/Projects/tally
 
 # Optional tmux socket
 # socket_name: foo
@@ -26,4 +26,6 @@ windows:
       layout: main-vertical
       panes:
         - vim
-        - ember serve
+        - guard
+  - server: bundle exec rails s
+  - logs: tail -f log/development.log
