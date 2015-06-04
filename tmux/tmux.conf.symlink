@@ -55,7 +55,7 @@ set -g other-pane-width 80
 # prefix a
 bind -r C-a send-prefix
 
-# prefix - and \
+# Easier splits
 bind-key - split-window -v -c "#{pane_current_path}"
 bind-key \ split-window -h -c "#{pane_current_path}"
 
@@ -69,6 +69,9 @@ bind-key -n C-h select-pane -L
 bind-key -n C-j select-pane -D
 bind-key -n C-k select-pane -U
 bind-key -n C-l select-pane -R
+
+# I always miss this binding
+bind C-[ copy-mode
 
 # Fine adjustment (1 or 2 cursor cells per bump)
 bind -n S-Left resize-pane -L 2
