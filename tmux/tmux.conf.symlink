@@ -9,7 +9,7 @@
 # -------------------------------------------------------------------
 # Change bind key to ctrl-a
 unbind-key C-b
-set -g prefix C-a
+set -g prefix C-s
 
 # 1-based index
 set -g base-index 1

@@ -12,9 +12,8 @@ let s:darwin = has('mac')
 silent! if plug#begin('~/.vim/plugged')
 
 " Color
-Plug 'chriskempson/base16-vim'
-Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -24,11 +23,13 @@ endif
 
 " Edit
 Plug 'junegunn/vim-easy-align',       { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'austintaylor/vim-indentobject'
 
 " Lang
 if v:version >= 703
@@ -51,6 +52,7 @@ endif
 " Browsing
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'scrooloose/nerdtree'
 if v:version >= 703
   Plug 'majutsushi/tagbar'
 endif
@@ -65,7 +67,6 @@ Plug 'sjl/vitality.vim'
 
 " Other
 Plug 'pbrisbin/vim-mkdir'
-Plug 'tpope/vim-vinegar'
 if s:darwin
   Plug 'tpope/vim-eunuch'
 endif
@@ -73,6 +74,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/ctags.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline'
 
 call plug#end()
 endif
@@ -89,30 +91,39 @@ set nu
 set autoindent
 set smartindent
 set lazyredraw
-set laststatus=2  " Always display the status line
+set laststatus=2                              " Always display the status line
 set showcmd
+set clipboard=unnamed                         " Use system clipboard
 set visualbell
 set backspace=indent,eol,start
 " set ttimeout
 set timeoutlen=500
 " set ttimeoutlen=0
-set hlsearch      " Highlight searches
+set hlsearch                                  " Highlight searches
 set incsearch
 set ignorecase smartcase
 set wildmenu
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildmode=longest,list,full
 set tabstop=2
 set shiftwidth=2
 set expandtab smarttab
-set scrolloff=5   " Always maintain 5 lines of scroll offset
+set scrolloff=5                               " Always maintain 5 lines of scroll offset
 set encoding=utf-8
-set listchars=eol:¬,tab:»·,trail:·,nbsp:·
+set list                                      " show trailing whitespace
+set listchars=tab:▸\ ,trail:▫
 set virtualedit=block
 set nojoinspaces
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
+set noswapfile                                " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set ruler                                     " show the cursor position all the time
+set showcmd                                   " display incomplete commands
 set nowrap
 set completeopt=menuone,preview,longest
+
+set mouse=a
+if exists('$TMUX')  " Support resizing in tmux
+  set ttymouse=xterm2
+endif
 
 if has('patch-7.4.338')
   let &showbreak = '↳ '
@@ -130,8 +141,14 @@ set splitright
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.dotfiles/vim/.vim-spell-en.utf-8.add
 
-silent! colo base16-ocean
+syntax enable
+silent! colo solarized
 set background=dark
+
+" Fix strange sign column color in Solarized
+if (g:colors_name == "solarized")
+  hi! link SignColumn LineNr
+endif
 
 " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory 
 " in MacVim (OK in non-GUI version of Vim)
@@ -339,6 +356,11 @@ map  gc  <Plug>Commentary
 nmap gcc <Plug>CommentaryLine
 
 " ----------------------------------------------------------------------------
+" NERDTree
+" ----------------------------------------------------------------------------
+nnoremap <Leader>k :NERDTreeToggle<cr>
+
+" ----------------------------------------------------------------------------
 " vim-fugitive
 " ----------------------------------------------------------------------------
 nmap     <Leader>gs :Gstatus<CR>gg<c-n>
@@ -365,6 +387,14 @@ let g:airline_right_sep=''
 let g:airline_right_alt_sep = '|'
 
 " ----------------------------------------------------------------------------
+" Bufferline
+" ----------------------------------------------------------------------------
+let g:bufferline_echo = 0
+autocmd VimEnter *
+  \ let &statusline='%{bufferline#refresh_status()}'
+    \ .bufferline#get_status_string()
+
+" ----------------------------------------------------------------------------
 " Ctrl-P
 " ----------------------------------------------------------------------------
 
@@ -386,7 +416,12 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " Use .ctrlp root markers
 let g:ctrlp_root_markers = ['.ctrlp']
 
+" Let Ctrl-P override NERD window
+let g:ctrlp_dont_split = 'NERD'
+
 " Ctrl-P mappings
+nnoremap <Leader>t :CtrlP<cr>
+nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <Leader>. :CtrlPTag<cr>
 
 " ----------------------------------------------------------------------------
@@ -472,6 +507,13 @@ augroup VimAwesomeComplete
   autocmd!
   autocmd FileType vim inoremap <c-x><c-v> <c-r>=VimAwesomeComplete()<cr>
 augroup END
+
+" ----------------------------------------------------------------------------
+" delimitMate
+" ----------------------------------------------------------------------------
+let delimitMate_expand_cr = 1
+let delimitMate_jump_expansion = 1
+let delimitMate_balance_matchpairs=1
 
 " }}}
 " ============================================================================
