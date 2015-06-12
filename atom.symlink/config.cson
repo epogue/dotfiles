@@ -1,6 +1,6 @@
 "*":
   editor:
-    fontFamily: "Input Mono Narrow"
+    fontFamily: "Menlo"
     invisibles:
       {}
     fontSize: 13
@@ -36,10 +36,6 @@
       "regex-railroad-diagram"
       "script"
       "atom-color-highlight"
-    ]
-    themes: [
-      "one-dark-ui"
-      "chester-atom-syntax"
     ]
   "spell-check":
     grammars: [
@@ -95,3 +91,13 @@
     scheme: "Isotope"
   "fuzzy-finder":
     searchAllPanes: true
+  "selector-to-tag":
+    activeForFileTypes: [
+      "htm"
+      "html"
+      "kit"
+      "tpl"
+      "tmpl"
+      "liquid"
+      "hbs"
+    ]

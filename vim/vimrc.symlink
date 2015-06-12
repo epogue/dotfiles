@@ -63,7 +63,6 @@ Plug 'vim-scripts/Rename'
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-dispatch'
-Plug 'sjl/vitality.vim'
 
 " Other
 Plug 'pbrisbin/vim-mkdir'
@@ -74,7 +73,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/ctags.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'bling/vim-airline'
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 
 call plug#end()
 endif
@@ -142,13 +141,14 @@ set splitright
 set spellfile=$HOME/.dotfiles/vim/.vim-spell-en.utf-8.add
 
 syntax enable
-silent! colo solarized
+silent! colo base16-ocean
 set background=dark
 
 " Fix strange sign column color in Solarized
-if (g:colors_name == "solarized")
-  hi! link SignColumn LineNr
-endif
+" augroup colorupdate
+"   autocmd!
+"   autocmd VimEnter,ColorScheme * hi! link SignColumn LineNr
+" augroup END
 
 " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory 
 " in MacVim (OK in non-GUI version of Vim)
@@ -157,7 +157,7 @@ if has("gui_macvim")
 endif
 
 if has('gui_running')
-  set guifont=InputMonoNarrow:h13
+  set guifont=Menlo:h13
   " disable left and right scrollbars
   set guioptions-=r guioptions-=L
 endif
@@ -389,10 +389,10 @@ let g:airline_right_alt_sep = '|'
 " ----------------------------------------------------------------------------
 " Bufferline
 " ----------------------------------------------------------------------------
-let g:bufferline_echo = 0
-autocmd VimEnter *
-  \ let &statusline='%{bufferline#refresh_status()}'
-    \ .bufferline#get_status_string()
+" let g:bufferline_echo = 0
+" autocmd VimEnter *
+"   \ let &statusline='%{bufferline#refresh_status()}'
+"     \ .bufferline#get_status_string()
 
 " ----------------------------------------------------------------------------
 " Ctrl-P
@@ -512,7 +512,7 @@ augroup END
 " delimitMate
 " ----------------------------------------------------------------------------
 let delimitMate_expand_cr = 1
-let delimitMate_jump_expansion = 1
+let delimitMate_jump_expansion = 0
 let delimitMate_balance_matchpairs=1
 
 " }}}

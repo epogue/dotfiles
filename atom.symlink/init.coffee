@@ -12,14 +12,8 @@
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrapped(true)
 
-
-atom.commands.add 'atom-text-editor', 'exit-insert-mode-if-preceeded-by-j': (e) ->
-  editor = @getModel()
-  pos = editor.getCursorBufferPosition()
-  range = [pos.traverse([0,-1]), pos]
-  lastChar = editor.getTextInBufferRange(range)
-  if lastChar != "j"
-    e.abortKeyBinding()
-  else
-    editor.backspace()
-    atom.commands.dispatch(e.currentTarget, 'vim-mode:activate-command-mode')
+atom.commands.add 'atom-text-editor', 'custom:wait-key-press', (e)->
+  oe = e.originalEvent
+  char = String.fromCharCode(oe.which)
+  char = char.toLowerCase() unless oe.shift
+  atom.workspace.getActivePaneItem().insertText(char)
