@@ -77,6 +77,6 @@ set_prompt () {
 }
 
 precmd() {
-  title "zsh" "%m" "%55<...<%~"
+  echo -ne "\e]1;${PWD##*/}\a"
   set_prompt
 }

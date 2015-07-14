@@ -1,12 +1,11 @@
 "*":
   editor:
     fontFamily: "Menlo"
-    invisibles:
-      {}
-    fontSize: 13
+    invisibles: {}
     lineHeight: 1.4
     autoIndentOnPaste: true
     normalizeIndentOnPaste: false
+    fontSize: 13
   core:
     ignoredNames: [
       ".sass-cache"
@@ -24,9 +23,6 @@
       "exception-reporting"
       "metrics"
       "autocomplete-paths"
-      "minimap"
-      "minimap-find-and-replace"
-      "minimap-git-diff"
       "minimap-highlight-selected"
       "minimap-selection"
       "relative-line-numbers"
@@ -47,44 +43,35 @@
     showOnStartup: false
   "release-notes":
     viewedVersion: "0.89.0"
-  linter:
-    {}
+  linter: {}
   minimap:
     plugins:
       "git-diff": true
       selection: true
       "find-and-replace": true
+      pigments: true
   "file-icons":
     coloured: false
   "autocomplete-plus":
     navigateCompletions: "ctrl-p,ctrl-n"
-  "vim-surround":
-    {}
+  "vim-surround": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
     useSmartcaseForSearch: true
-  "rails-rspec":
-    {}
+  "rails-rspec": {}
   "git-projects":
     rootPath: "/Users/epogue/Projects"
   "relative-numbers":
     displayTrueLineNumberOnCurrentLine: true
   "relative-line-numbers":
     showNormalLineNumbers: false
-  "one-dark-ui":
-    {}
-  "advanced-new-file":
-    {}
-  "atom-fuzzy-grep":
-    {}
-  "linter-eslint":
-    {}
-  emmet:
-    {}
-  "atom-color-highlight":
-    {}
-  "merge-conflicts":
-    {}
+  "one-dark-ui": {}
+  "advanced-new-file": {}
+  "atom-fuzzy-grep": {}
+  "linter-eslint": {}
+  emmet: {}
+  "atom-color-highlight": {}
+  "merge-conflicts": {}
   "isotope-ui":
     fontFamily: "Source Sans Pro"
   "base16-syntax":
@@ -101,3 +88,6 @@
       "liquid"
       "hbs"
     ]
+  "cursor-history":
+    flashOnLand: true
+  tabs: {}

@@ -27,15 +27,7 @@
   'ctrl-e': 'editor:move-to-end-of-line'
   'cmd-.': 'rails-rspec:toggle-spec-file'
 
-'atom-text-editor.vim-mode.insert-mode':
-  'j': 'custom:wait-key-press'
-
-'.tree-view':
-  'space k': 'tree-view:toggle'
-
 'atom-text-editor.vim-mode.command-mode':
   'space s': 'core:save'
-  'space k': 'tree-view:toggle'
-
-'.vim-mode.insert-mode:not(.mini)':
-  'j k': 'vim-mode:activate-command-mode'
+  'ctrl-i': 'cursor-history:next'
+  'ctrl-o': 'cursor-history:prev'

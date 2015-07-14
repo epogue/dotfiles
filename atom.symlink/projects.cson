@@ -1,0 +1,15 @@
+bolt:
+  title: "bolt"
+  paths: [
+    "/Users/epogue/Projects/bolt"
+  ]
+"archadeck-logbook":
+  title: "archadeck-logbook"
+  paths: [
+    "/Users/epogue/Projects/archadeck-logbook"
+  ]
+"archadeck-logbook-frontend":
+  title: "archadeck-logbook-frontend"
+  paths: [
+    "/Users/epogue/Projects/archadeck-logbook-frontend"
+  ]

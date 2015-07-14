@@ -179,9 +179,9 @@ noremap <C-F> <C-D>
 noremap <C-B> <C-U>
 
 " Save
-inoremap <C-s>      <C-O>:update<cr>
-nnoremap <C-s>      :update<cr>
-nnoremap <leader>s  :update<cr>
+" inoremap <C-s>      <C-O>:update<cr>
+" nnoremap <C-s>      :update<cr>
+" nnoremap <leader>s  :update<cr>
 
 " Disable CTRL-A on tmux or on screen
 if $TERM =~ 'screen'
@@ -206,10 +206,9 @@ if v:version >= 703
   let g:tagbar_sort = 0
 endif
 
-" jk | Escaping!
-inoremap jk <Esc>
-xnoremap jk <Esc>
-cnoremap jk <C-c>
+" Escaping!
+inoremap <C-c> <Esc>
+xnoremap <C-c> <Esc>
 
 " Movement in insert mode
 inoremap <C-h> <C-o>h
@@ -233,6 +232,9 @@ nnoremap <Leader><Leader> <c-^>
 
 " Make Y behave like other capitals
 nnoremap Y y$
+
+" Put should autoindent
+nnoremap p p=`]
 
 " qq to record, Q to replay
 nmap Q @q
