@@ -5,6 +5,7 @@
     lineHeight: 1.4
     autoIndentOnPaste: true
     normalizeIndentOnPaste: false
+    showIndentGuide: true
     fontSize: 13
   core:
     ignoredNames: [
@@ -23,16 +24,13 @@
       "exception-reporting"
       "metrics"
       "autocomplete-paths"
-      "minimap-highlight-selected"
-      "minimap-selection"
       "relative-line-numbers"
-      "linter"
-      "linter-eslint"
       "emmet"
       "regex-railroad-diagram"
       "script"
       "atom-color-highlight"
     ]
+    followSymlinks: false
   "spell-check":
     grammars: [
       "text.plain"
@@ -43,7 +41,8 @@
     showOnStartup: false
   "release-notes":
     viewedVersion: "0.89.0"
-  linter: {}
+  linter:
+    showErrorPanel: false
   minimap:
     plugins:
       "git-diff": true
@@ -54,6 +53,7 @@
     coloured: false
   "autocomplete-plus":
     navigateCompletions: "ctrl-p,ctrl-n"
+    confirmCompletion: "tab"
   "vim-surround": {}
   "vim-mode":
     useClipboardAsDefaultRegister: true
@@ -91,3 +91,14 @@
   "cursor-history":
     flashOnLand: true
   tabs: {}
+  "autocomplete-ctags": {}
+  pigments:
+    ignoredScopes: [
+      "\\.comment|\\.html\\.htmlbars|\\.js"
+    ]
+  "linter-jshint": {}
+  "atom-pair":
+    slack_url: "https://hooks.slack.com/services/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"
+".ini.source":
+  editor:
+    normalizeIndentOnPaste: "false"

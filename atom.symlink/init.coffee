@@ -12,13 +12,10 @@
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrapped(true)
 
-atom.commands.add 'atom-text-editor', 'exit-insert-mode-if-preceded-by-k': (e) ->
-  editor = @getModel()
-  pos = editor.getCursorBufferPosition()
-  range = [pos.traverse([0,-1]), pos]
-  lastChar = editor.getTextInBufferRange(range)
-  if lastChar != "k"
-    e.abortKeyBinding()
-  else
-    editor.backspace()
-    atom.commands.dispatch(e.currentTarget, 'vim-mode:activate-command-mode')
+atom.commands.add 'atom-text-editor', 'custom:cc': (e) ->
+  editor = atom.workspace.getActiveTextEditor()
+  buffer = editor.getBuffer()
+  checkpoint = buffer.createCheckpoint()
+  atom.commands.dispatch(e.currentTarget, 'editor:delete-line')
+  atom.commands.dispatch(e.currentTarget, 'vim-mode:insert-above-with-newline')
+  buffer.groupChangesSinceCheckpoint(checkpoint)

@@ -22,12 +22,17 @@
 
 '.platform-darwin':
   'ctrl-cmd-.': 'key-binding-resolver:toggle'
+  'ctrl-c': 'core:cancel'
 
 '.platform-darwin atom-text-editor:not([mini])':
   'ctrl-e': 'editor:move-to-end-of-line'
   'cmd-.': 'rails-rspec:toggle-spec-file'
 
-'atom-text-editor.vim-mode.command-mode':
+'atom-text-editor.vim-mode.normal-mode':
   'space s': 'core:save'
   'ctrl-i': 'cursor-history:next'
   'ctrl-o': 'cursor-history:prev'
+  'space d': 'dash:shortcut'
+
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  'g c c': 'editor:toggle-line-comments'
