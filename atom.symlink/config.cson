@@ -1,13 +1,33 @@
 "*":
-  editor:
-    fontFamily: "Menlo"
-    invisibles: {}
-    lineHeight: 1.4
-    autoIndentOnPaste: true
-    normalizeIndentOnPaste: false
-    showIndentGuide: true
-    fontSize: 13
+  "advanced-new-file": {}
+  "atom-color-highlight": {}
+  "atom-fuzzy-grep": {}
+  "atom-pair":
+    slack_url: "https://hooks.slack.com/services/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"
+  "atom-terminal": {}
+  "autocomplete-ctags": {}
+  "autocomplete-elixir":
+    elixirPath: "/usr/local/bin"
+    erlangHome: "/usr/local/bin"
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+    navigateCompletions: "ctrl-p,ctrl-n"
+  "base16-syntax":
+    scheme: "Isotope"
   core:
+    disabledPackages: [
+      "exception-reporting"
+      "metrics"
+      "autocomplete-paths"
+      "relative-line-numbers"
+      "emmet"
+      "regex-railroad-diagram"
+      "script"
+      "atom-color-highlight"
+      "terminal-plus"
+    ]
+    followSymlinks: false
+    hideGitIgnoredFiles: true
     ignoredNames: [
       ".sass-cache"
       ".codekit-cache"
@@ -19,65 +39,48 @@
       "tmp"
       "vendor"
     ]
-    hideGitIgnoredFiles: true
-    disabledPackages: [
-      "exception-reporting"
-      "metrics"
-      "autocomplete-paths"
-      "relative-line-numbers"
-      "emmet"
-      "regex-railroad-diagram"
-      "script"
-      "atom-color-highlight"
-    ]
-    followSymlinks: false
-  "spell-check":
-    grammars: [
-      "text.plain"
-      "source.gfm"
-      "text.git-commit"
-    ]
-  welcome:
-    showOnStartup: false
-  "release-notes":
-    viewedVersion: "0.89.0"
-  linter:
-    showErrorPanel: false
-  minimap:
-    plugins:
-      "git-diff": true
-      selection: true
-      "find-and-replace": true
-      pigments: true
+  "cursor-history":
+    flashOnLand: true
+  editor:
+    autoIndentOnPaste: true
+    fontFamily: "Menlo"
+    invisibles: {}
+    lineHeight: 1.4
+    normalizeIndentOnPaste: false
+    showIndentGuide: true
+  "ember-cli-helper": {}
+  emmet: {}
   "file-icons":
     coloured: false
-  "autocomplete-plus":
-    navigateCompletions: "ctrl-p,ctrl-n"
-    confirmCompletion: "tab"
-  "vim-surround": {}
-  "vim-mode":
-    useClipboardAsDefaultRegister: true
-    useSmartcaseForSearch: true
-  "rails-rspec": {}
-  "git-projects":
-    rootPath: "/Users/epogue/Projects"
-  "relative-numbers":
-    displayTrueLineNumberOnCurrentLine: true
-  "relative-line-numbers":
-    showNormalLineNumbers: false
-  "one-dark-ui": {}
-  "advanced-new-file": {}
-  "atom-fuzzy-grep": {}
-  "linter-eslint": {}
-  emmet: {}
-  "atom-color-highlight": {}
-  "merge-conflicts": {}
-  "isotope-ui":
-    fontFamily: "Source Sans Pro"
-  "base16-syntax":
-    scheme: "Isotope"
   "fuzzy-finder":
     searchAllPanes: true
+  "git-projects":
+    rootPath: "/Users/epogue/Projects"
+  "isotope-ui":
+    fontFamily: "Source Sans Pro"
+  linter:
+    showErrorPanel: false
+  "linter-eslint": {}
+  "linter-jshint": {}
+  "merge-conflicts": {}
+  minimap:
+    plugins:
+      "find-and-replace": true
+      "git-diff": true
+      pigments: true
+      selection: true
+  "one-dark-ui": {}
+  pigments:
+    ignoredScopes: [
+      "\\.comment|\\.html\\.htmlbars|\\.js"
+    ]
+  "rails-rspec": {}
+  "relative-line-numbers":
+    showNormalLineNumbers: false
+  "relative-numbers":
+    displayTrueLineNumberOnCurrentLine: true
+  "release-notes":
+    viewedVersion: "0.89.0"
   "selector-to-tag":
     activeForFileTypes: [
       "htm"
@@ -88,17 +91,22 @@
       "liquid"
       "hbs"
     ]
-  "cursor-history":
-    flashOnLand: true
-  tabs: {}
-  "autocomplete-ctags": {}
-  pigments:
-    ignoredScopes: [
-      "\\.comment|\\.html\\.htmlbars|\\.js"
+  "spell-check":
+    grammars: [
+      "text.plain"
+      "source.gfm"
+      "text.git-commit"
     ]
-  "linter-jshint": {}
-  "atom-pair":
-    slack_url: "https://hooks.slack.com/services/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"
+  tabs: {}
+  "terminal-plus":
+    core: {}
+    style: {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+  "vim-surround": {}
+  welcome:
+    showOnStartup: false
 ".ini.source":
   editor:
     normalizeIndentOnPaste: "false"

@@ -23,8 +23,7 @@ endfunction
 
 " Color
 Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/base16-vim'
-Plug 'geoffharcourt/one-dark.vim'
+Plug 'toiffel/base16-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -62,11 +61,13 @@ if s:darwin
   Plug 'Keithbsmiley/investigate.vim'
   Plug 'rizzatti/dash.vim'
 endif
+Plug 'elixir-lang/vim-elixir'
 
 " Browsing
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 if v:version >= 703
   Plug 'majutsushi/tagbar'
 endif
@@ -74,10 +75,6 @@ Plug 'justinmk/vim-gtfo'
 Plug 'duggiefresh/vim-easydir'
 Plug 'vim-scripts/Rename'
 Plug 'tpope/vim-projectionist'
-
-" Tmux
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-dispatch'
 
 " Other
 Plug 'pbrisbin/vim-mkdir'
@@ -158,8 +155,8 @@ set splitright
 set spellfile=$HOME/.dotfiles/vim/.vim-spell-en.utf-8.add
 
 syntax enable
-silent! colo base16-flat
-" set background=dark
+silent! colo base16-ocean
+set background=dark
 
 " Fix strange sign column color in Solarized
 " augroup colorupdate
@@ -200,9 +197,9 @@ noremap <C-F> <C-D>
 noremap <C-B> <C-U>
 
 " Save
-" inoremap <C-s>      <C-O>:update<cr>
-" nnoremap <C-s>      :update<cr>
-" nnoremap <leader>s  :update<cr>
+inoremap <C-s>      <C-O>:update<cr>
+nnoremap <C-s>      :update<cr>
+nnoremap <leader>s  :update<cr>
 
 " Disable CTRL-A on tmux or on screen
 if $TERM =~ 'screen'
@@ -382,6 +379,7 @@ nmap gcc <Plug>CommentaryLine
 " NERDTree
 " ----------------------------------------------------------------------------
 nnoremap <Leader>k :NERDTreeToggle<cr>
+nnoremap <Leader>f :NERDTreeFind<cr>
 
 " ----------------------------------------------------------------------------
 " vim-fugitive
@@ -538,6 +536,21 @@ let delimitMate_expand_cr = 1
 let delimitMate_jump_expansion = 0
 let delimitMate_balance_matchpairs=1
 
+" ----------------------------------------------------------------------------
+" nerdtree-git-plugin
+" ----------------------------------------------------------------------------
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "*",
+    \ "Staged"    : "+",
+    \ "Untracked" : "?",
+    \ "Renamed"   : "R",
+    \ "Unmerged"  : "=",
+    \ "Deleted"   : "x",
+    \ "Dirty"     : "M",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
 " }}}
 " ============================================================================
 " FUNCTIONS & COMMANDS {{{
@@ -605,4 +618,4 @@ augroup vimrc
 augroup END
 
 " }}}
-" =============================================================================
+" ============================================================================

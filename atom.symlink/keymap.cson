@@ -33,6 +33,17 @@
   'ctrl-i': 'cursor-history:next'
   'ctrl-o': 'cursor-history:prev'
   'space d': 'dash:shortcut'
+  'space k': 'tree-view:toggle'
+  'space t': 'fuzzy-finder:toggle-file-finder'
+
+'.tree-view':
+  'space k': 'tree-view:toggle'
+  'o': 'tree-view:open-selected-entry'
+  'space t': 'fuzzy-finder:toggle-file-finder'
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
   'g c c': 'editor:toggle-line-comments'
+
+'.fuzzy-finder atom-text-editor[mini]':
+  'ctrl-v': 'pane:split-right'
+  'ctrl-s': 'pane:split-down'
