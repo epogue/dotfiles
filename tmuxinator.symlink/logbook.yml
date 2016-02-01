@@ -1,6 +1,6 @@
 # ~/.tmuxinator/archadeck-logbook.yml
 
-name: archadeck-logbook-backend
+name: archadeck-logbook
 root: ~/Projects/archadeck-logbook
 
 # Optional tmux socket
@@ -22,10 +22,17 @@ root: ~/Projects/archadeck-logbook
 # startup_window: logs
 
 windows:
-  - editor:
+  - frontend:
+      root: ~/Projects/archadeck-logbook-frontend
       layout: main-vertical
       panes:
-        - vim
+        - e
+        - ember serve
+        - # empty
+  - backend:
+      layout: main-vertical
+      panes:
+        - e
         - guard
   - server: foreman start
   - logs: tail -f log/development.log

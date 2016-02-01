@@ -1,7 +1,7 @@
 # ~/.tmuxinator/nra-registration.yml
 
-name: nra-registration
-root: ~/Projects/nra-registration
+name: appi-testing-kit
+root: ~/Projects/appi-testing-kit
 
 # Optional tmux socket
 # socket_name: foo
