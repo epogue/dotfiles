@@ -43,7 +43,7 @@
     flashOnLand: true
   editor:
     autoIndentOnPaste: true
-    fontFamily: "Menlo"
+    fontFamily: "Operator Mono SSm"
     fontSize: 12
     invisibles: {}
     lineHeight: 1.4
@@ -55,12 +55,12 @@
     coloured: false
   "fuzzy-finder":
     searchAllPanes: true
+  "git-plus": {}
   "git-projects":
     rootPath: "/Users/epogue/Projects"
   "isotope-ui":
     fontFamily: "Source Sans Pro"
-  linter:
-    showErrorPanel: false
+  linter: {}
   "linter-eslint": {}
   "linter-jshint": {}
   "merge-conflicts": {}
@@ -98,7 +98,9 @@
       "source.gfm"
       "text.git-commit"
     ]
-  tabs: {}
+  tabs:
+    enableVcsColoring: true
+    usePreviewTabs: true
   "terminal-plus":
     core: {}
     style: {}
@@ -108,6 +110,9 @@
   "vim-surround": {}
   welcome:
     showOnStartup: false
+".diff.source":
+  editor:
+    normalizeIndentOnPaste: "false"
 ".ini.source":
   editor:
     normalizeIndentOnPaste: "false"

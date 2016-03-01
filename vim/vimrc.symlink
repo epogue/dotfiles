@@ -234,6 +234,10 @@ if v:version >= 703
 endif
 
 " Escaping!
+inoremap fd <Esc>
+nnoremap fd <Esc>
+vnoremap fd <Esc>
+
 inoremap <C-c> <Esc>
 xnoremap <C-c> <Esc>
 

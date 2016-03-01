@@ -13,3 +13,8 @@ bolt:
   paths: [
     "/Users/epogue/Projects/archadeck-logbook-frontend"
   ]
+"archadeck-logbook-phoenix":
+  title: "archadeck-logbook-phoenix"
+  paths: [
+    "/Users/epogue/Projects/archadeck-logbook-phoenix"
+  ]
