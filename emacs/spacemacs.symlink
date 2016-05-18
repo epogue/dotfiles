@@ -57,7 +57,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(editorconfig atom-one-dark-theme)
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -256,11 +256,43 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  ;; Wrap lines by default
   (spacemacs/toggle-truncate-lines-on)
-  (setq powerline-default-separator 'slant)
+
+  ;; Fix powerline colors
+  (setq ns-use-srgb-colorspace nil)
+
+  ;; Huge performance boost
+  (setq vc-handled-backends nil)
+
+  ;; Splitting windows like a boss
+  (defun my-split-window-sensibly (&optional window)
+  (let ((window (or window (selected-window))))
+    (or (and (window-splittable-p window t)
+             ;; Split window horizontally.
+             (with-selected-window window
+               (split-window-right)))
+        (and (window-splittable-p window)
+             ;; Split window vertically.
+             (with-selected-window window
+               (split-window-below)))
+        (and (eq window (frame-root-window (window-frame window)))
+             (not (window-minibuffer-p window))
+             ;; If WINDOW is the only window on its frame and is not the
+             ;; minibuffer window, try to split it horizontally disregarding
+             ;; the value of `split-width-threshold'.
+             (let ((split-width-threshold 0))
+               (when (window-splittable-p window t)
+                 (with-selected-window window
+                   (split-window-right))))))))
+
+  (setq split-window-preferred-function 'my-split-window-sensibly)
+  (setq split-width-threshold 160)
 
   ;; Visual line navigation for textual modes
   (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation)
+
   ;; Fix evil
   (fset 'evil-visual-update-x-selection 'ignore)
 
@@ -276,6 +308,7 @@ layers configuration. You are free to put any user code."
                            empty
                            space-after-tab))
 
+  ;; Indentation
   (setq-default
    indent-tabs-mode nil
 
@@ -295,9 +328,11 @@ layers configuration. You are free to put any user code."
     (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
+  ;; dash-at-point config
+  (add-to-list 'dash-at-point-mode-alist '(js2-mode . "javascript,jquery,angularjs,ember"))
+
   ;; Don't create lockfiles, weirdo
-  (setq create-lockfiles nil)
-  )
+  (setq create-lockfiles nil))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -345,6 +380,9 @@ layers configuration. You are free to put any user code."
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+ '(package-selected-packages
+   (quote
+    (iedit request zenburn-theme web-mode ujelly-theme toxi-theme toc-org spaceline powerline sass-mode rainbow-delimiters planet-theme persp-mode organic-green-theme org-plus-contrib open-junk-file move-text monokai-theme material-theme magit-gitflow magit-gh-pulls linum-relative leuven-theme js2-refactor multiple-cursors js2-mode ido-vertical-mode hl-todo helm-projectile helm-ag gruvbox-theme gotham-theme google-translate evil-surround evil-mc emmet-mode editorconfig dracula-theme company-web company-tern tern color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized badwolf-theme auto-compile anti-zenburn-theme alchemist elixir-mode aggressive-indent ace-link avy smartparens flycheck yasnippet company projectile helm helm-core markdown-mode alert magit magit-popup git-commit async hydra dash s package-build which-key bind-map evil spacemacs-theme zonokai-theme zen-and-art-theme ws-butler with-editor window-numbering web-completion-data web-beautify volatile-highlights vi-tilde-fringe use-package undo-tree underwater-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smeargle slim-mode seti-theme scss-mode ruby-end reverse-theme reveal-in-osx-finder restart-emacs railscasts-theme quelpa purple-haze-theme professional-theme popwin pkg-info phoenix-dark-pink-theme phoenix-dark-mono-theme pcre2el pbcopy pastels-on-dark-theme paradox page-break-lines packed osx-trash orgit org-repo-todo org-present org-pomodoro org-bullets omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme markdown-toc majapahit-theme macrostep lush-theme lorem-ipsum log4e light-soap-theme less-css-mode launchctl json-mode js-doc jbeans-theme jazz-theme jade-mode ir-black-theme inkpot-theme info+ indent-guide hungry-delete htmlize highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet hc-zenburn-theme haml-mode gruber-darker-theme grandshell-theme goto-chg golden-ratio gnuplot gntp github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu espresso-theme erlang ember-mode elisp-slime-nav django-theme diff-hl define-word dash-functional dash-at-point darktooth-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-statistics company-quickhelp colorsarenice-theme coffee-mode clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme buffer-move bubbleberry-theme bracketed-paste birds-of-paradise-plus-theme auto-yasnippet auto-highlight-symbol apropospriate-theme ample-zen-theme ample-theme alect-themes afternoon-theme adaptive-wrap ace-window ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
@@ -384,4 +422,9 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(font-lock-function-name-face ((t (:inherit nil))))
+ '(font-lock-keyword-face ((t (:inherit nil))))
+ '(italic ((t (:weight light :slant italic))))
+ '(web-mode-block-attr-name-face ((t (:inherit web-mode-html-attr-name-face))))
+ '(web-mode-html-attr-name-face ((t (:inherit italic)))))
