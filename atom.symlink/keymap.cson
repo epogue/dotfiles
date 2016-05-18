@@ -1,49 +1,12 @@
-# Your keymap
-#
-# Atom keymaps work similarly to stylesheets. Just as stylesheets use selectors
-# to apply styles to elements, Atom keymaps use selectors to associate
-# keystrokes with events in specific contexts.
-#
-# You can create a new keybinding in this file by typing "key" and then hitting
-# tab.
-#
-# Here's an example taken from Atom's built-in keymap:
-#
-# '.editor':
-#   'enter': 'editor:newline'
-#
-# '.workspace':
-#   'ctrl-shift-p': 'core:move-up'
-#   'ctrl-p': 'core:move-down'
-#
-# You can find more information about keymaps in these guides:
-# * https://atom.io/docs/latest/customizing-atom#customizing-key-bindings
-# * https://atom.io/docs/latest/advanced/keymaps
+'atom-text-editor.vim-mode-plus':
+  'f d': 'vim-mode-plus:reset-normal-mode'
 
-'.platform-darwin':
-  'ctrl-cmd-.': 'key-binding-resolver:toggle'
-  'ctrl-c': 'core:cancel'
+'atom-text-editor.vim-mode-plus:not(.normal-mode)':
+  'f d': 'vim-mode-plus:activate-normal-mode'
 
-'.platform-darwin atom-text-editor:not([mini])':
-  'ctrl-e': 'editor:move-to-end-of-line'
-  'cmd-.': 'rails-rspec:toggle-spec-file'
+'atom-text-editor.vim-mode-plus.normal-mode':
+  ':': 'vim-mode-plus-ex-mode:open'
+  '!': 'vim-mode-plus-ex-mode:toggle-setting'
 
-'atom-text-editor.vim-mode.normal-mode':
-  'space s': 'core:save'
-  'ctrl-i': 'cursor-history:next'
-  'ctrl-o': 'cursor-history:prev'
-  'space d': 'dash:shortcut'
-  'space k': 'tree-view:toggle'
-  'space t': 'fuzzy-finder:toggle-file-finder'
-
-'.tree-view':
-  'space k': 'tree-view:toggle'
-  'o': 'tree-view:open-selected-entry'
-  'space t': 'fuzzy-finder:toggle-file-finder'
-
-'atom-text-editor.vim-mode:not(.insert-mode)':
-  'g c c': 'editor:toggle-line-comments'
-
-'.fuzzy-finder atom-text-editor[mini]':
-  'ctrl-v': 'pane:split-right'
-  'ctrl-s': 'pane:split-down'
+'atom-panel.modal':
+  'f d': 'core:cancel'

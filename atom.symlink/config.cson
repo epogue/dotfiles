@@ -1,118 +1,18 @@
 "*":
-  "advanced-new-file": {}
-  "atom-color-highlight": {}
-  "atom-fuzzy-grep": {}
-  "atom-pair":
-    slack_url: "https://hooks.slack.com/services/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"
-  "atom-terminal": {}
-  "autocomplete-ctags": {}
-  "autocomplete-elixir":
-    elixirPath: "/usr/local/bin"
-    erlangHome: "/usr/local/bin"
-  "autocomplete-plus":
-    confirmCompletion: "tab"
-    navigateCompletions: "ctrl-p,ctrl-n"
-  "base16-syntax":
-    scheme: "Isotope"
   core:
     disabledPackages: [
-      "exception-reporting"
-      "metrics"
-      "autocomplete-paths"
-      "relative-line-numbers"
-      "emmet"
-      "regex-railroad-diagram"
-      "script"
-      "atom-color-highlight"
-      "terminal-plus"
+      "vim-mode-plus-ex-mode"
     ]
-    followSymlinks: false
-    hideGitIgnoredFiles: true
-    ignoredNames: [
-      ".sass-cache"
-      ".codekit-cache"
-      ".bundle"
-      ".git"
-      "log"
-      ".DS_Store"
-      "repositories"
-      "tmp"
-      "vendor"
-    ]
-  "cursor-history":
-    flashOnLand: true
   editor:
-    autoIndentOnPaste: true
     fontFamily: "Operator Mono SSm"
     fontSize: 12
     invisibles: {}
-    lineHeight: 1.4
-    normalizeIndentOnPaste: false
-    showIndentGuide: true
-  "ember-cli-helper": {}
-  emmet: {}
-  "file-icons":
-    coloured: false
-  "fuzzy-finder":
-    searchAllPanes: true
-  "git-plus": {}
-  "git-projects":
-    rootPath: "/Users/epogue/Projects"
-  "isotope-ui":
-    fontFamily: "Source Sans Pro"
-  linter: {}
-  "linter-eslint": {}
-  "linter-jshint": {}
-  "merge-conflicts": {}
-  minimap:
-    plugins:
-      "find-and-replace": true
-      "git-diff": true
-      pigments: true
-      selection: true
-  "one-dark-ui": {}
-  pigments:
-    ignoredScopes: [
-      "\\.comment|\\.html\\.htmlbars|\\.js"
-    ]
-  "rails-rspec": {}
-  "relative-line-numbers":
-    showNormalLineNumbers: false
-  "relative-numbers":
-    displayTrueLineNumberOnCurrentLine: true
-  "release-notes":
-    viewedVersion: "0.89.0"
-  "selector-to-tag":
-    activeForFileTypes: [
-      "htm"
-      "html"
-      "kit"
-      "tpl"
-      "tmpl"
-      "liquid"
-      "hbs"
-    ]
-  "spell-check":
-    grammars: [
-      "text.plain"
-      "source.gfm"
-      "text.git-commit"
-    ]
-  tabs:
-    enableVcsColoring: true
-    usePreviewTabs: true
-  "terminal-plus":
-    core: {}
-    style: {}
-  "vim-mode":
-    useClipboardAsDefaultRegister: true
+  "exception-reporting":
+    userId: "6755bc9b-8907-fee5-4a18-ac70cc829b4c"
+  "file-icons": {}
+  "vim-mode-plus":
+    highlightSearch: true
+    incrementalSearch: true
     useSmartcaseForSearch: true
-  "vim-surround": {}
   welcome:
     showOnStartup: false
-".diff.source":
-  editor:
-    normalizeIndentOnPaste: "false"
-".ini.source":
-  editor:
-    normalizeIndentOnPaste: "false"
