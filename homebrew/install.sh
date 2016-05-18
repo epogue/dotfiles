@@ -19,6 +19,10 @@ brew install grc coreutils spark the_silver_searcher
 brew install macvim --override-system-vim
 brew linkapps macvim
 
+# Install and link emacs
+brew install emacs --HEAD --with-cocoa
+brew linkapps emacs
+
 # Install and link NeoVim config
 brew install neovim
 ln -s ~/.vim ~/.config/nvim
