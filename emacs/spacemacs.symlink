@@ -25,7 +25,14 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     theming
+     (theming
+      :variables
+      theming-modifications '((spacemacs-dark (italic :weight light :slant italic)
+                                              (font-lock-keyword-face :inherit nil)
+                                              (font-lock-function-name-face :inherit nil)
+                                              ;; (web-mode-html-tag-face :inherit bold)
+                                              (web-mode-html-attr-name-face :inherit italic)
+                                              (web-mode-block-attr-name-face :inherit web-mode-html-attr-name-face))))
      themes-megapack
      elixir
      erlang
@@ -106,12 +113,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
