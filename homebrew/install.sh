@@ -15,10 +15,6 @@ fi
 # Install homebrew packages
 brew install grc coreutils spark the_silver_searcher
 
-# Install and link MacVim
-brew install macvim --override-system-vim
-brew linkapps macvim
-
 # Install and link emacs
 brew install emacs --HEAD --with-cocoa
 brew linkapps emacs
