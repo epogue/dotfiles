@@ -68,8 +68,8 @@ Plug 'avdgaag/vim-phoenix'
 Plug 'SirVer/ultisnips'
 
 " Browsing
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 if v:version >= 703
@@ -81,6 +81,7 @@ Plug 'vim-scripts/Rename'
 Plug 'tpope/vim-projectionist'
 
 " Other
+Plug 'kassio/neoterm'
 Plug 'pbrisbin/vim-mkdir'
 if s:darwin
   Plug 'tpope/vim-eunuch'
@@ -126,7 +127,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab smarttab
 set scrolloff=5                               " Always maintain 5 lines of scroll offset
-set encoding=utf-8
+silent! set encoding=utf-8
 set list                                      " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 set virtualedit=block
@@ -238,6 +239,7 @@ endif
 inoremap fd <Esc>
 nnoremap fd <Esc>
 vnoremap fd <Esc>
+tnoremap fd <C-\><C-n>
 
 inoremap <C-c> <Esc>
 xnoremap <C-c> <Esc>
@@ -389,8 +391,7 @@ nnoremap <silent> gpi :<c-u>call <SID>go_indent(v:count1, -1)<cr>
 " ----------------------------------------------------------------------------
 " quick grep
 " ----------------------------------------------------------------------------
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+" command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 
 " }}}
@@ -452,30 +453,62 @@ let g:airline_right_alt_sep = '|'
 " ----------------------------------------------------------------------------
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
+" if executable('ag')
   " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  " set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --ignore .git --ignore .ctrlp --nocolor --hidden -g ""'
+  " let g:ctrlp_user_command = 'ag %s -l --ignore .git --ignore .ctrlp --nocolor --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+  " let g:ctrlp_use_caching = 0
+" endif
 
 " Speed up CtrlP matching
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Use .ctrlp root markers
-let g:ctrlp_root_markers = ['.ctrlp']
+" let g:ctrlp_root_markers = ['.ctrlp']
 
 " Let Ctrl-P override NERD window
-let g:ctrlp_reuse_window = 'NERD_tree_1'
+" let g:ctrlp_reuse_window = 'NERD_tree_1'
 
 " Ctrl-P mappings
-nnoremap <Leader>t :CtrlP<cr>
-nnoremap <Leader>b :CtrlPBuffer<cr>
-nnoremap <Leader>. :CtrlPTag<cr>
+" nnoremap <Leader>t :CtrlP<cr>
+" nnoremap <Leader>b :CtrlPBuffer<cr>
+" nnoremap <Leader>. :CtrlPTag<cr>
+
+" ----------------------------------------------------------------------------
+" FZF
+" ----------------------------------------------------------------------------
+
+" let g:fzf_layout = { 'window': '40sp' }
+
+" Keybindings
+nnoremap <silent> <Leader>t :Files<cr>
+nnoremap <silent> <Leader>b :Buffers<cr>
+nnoremap <silent> <Leader>. :Tags<cr>
+nnoremap <silent> <Leader>\ :Ag<cr>
+
+
+" ----------------------------------------------------------------------------
+" neoterm config
+" ----------------------------------------------------------------------------
+
+let g:neoterm_position = 'horizontal'
+let g:neoterm_automap_keys = ',tt'
+
+nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
+nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
+nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
+nnoremap <silent> ,rr :call neo" Useful maps
+
+" hide/close terminal
+nnoremap <silent> ,th :call neoterm#close()<cr>
+" clear terminal
+nnoremap <silent> ,tl :call neoterm#clear()<cr>
+" kills the current job (send a <c-c>)
+nnoremap <silent> ,tc :call neoterm#kill()<cr>term#test#rerun()<cr>
 
 " ----------------------------------------------------------------------------
 " <Enter> | vim-easy-align
