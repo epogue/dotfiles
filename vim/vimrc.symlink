@@ -51,6 +51,7 @@ if v:version >= 703
 endif
 Plug 'sukima/xmledit'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-rails'
 Plug 'thoughtbot/vim-rspec'
@@ -180,7 +181,7 @@ if has('gui_macvim')
 endif
 
 if has('gui_running')
-  set guifont=Menlo:h13
+  set guifont=Operator Mono SSm:h13
   " disable left and right scrollbars
   set guioptions-=r guioptions-=L
 endif
@@ -566,6 +567,13 @@ augroup END
 let delimitMate_expand_cr = 1
 let delimitMate_jump_expansion = 0
 let delimitMate_balance_matchpairs=1
+
+" ----------------------------------------------------------------------------
+" vim-jsx
+" ----------------------------------------------------------------------------
+
+" Don't require JSX extension
+let g:jsx_ext_required = 0
 
 " ----------------------------------------------------------------------------
 " nerdtree-git-plugin

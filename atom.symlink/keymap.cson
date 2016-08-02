@@ -10,3 +10,7 @@
 
 'atom-panel.modal':
   'f d': 'core:cancel'
+
+'.fuzzy-finder atom-text-editor[mini]':
+  'ctrl-v': 'pane:split-right'
+  'ctrl-s': 'pane:split-down'

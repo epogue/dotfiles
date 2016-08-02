@@ -2,6 +2,7 @@
   core:
     disabledPackages: [
       "vim-mode-plus-ex-mode"
+      "vim-surround"
     ]
   editor:
     fontFamily: "Operator Mono SSm"
@@ -9,7 +10,10 @@
     invisibles: {}
   "exception-reporting":
     userId: "6755bc9b-8907-fee5-4a18-ac70cc829b4c"
-  "file-icons": {}
+  "file-icons":
+    coloured: false
+  react:
+    enabledForAllJavascriptFiles: true
   "vim-mode-plus":
     highlightSearch: true
     incrementalSearch: true
