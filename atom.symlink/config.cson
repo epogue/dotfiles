@@ -2,7 +2,11 @@
   core:
     disabledPackages: [
       "vim-mode-plus-ex-mode"
-      "vim-surround"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "cobalt2-syntax"
     ]
   editor:
     fontFamily: "Operator Mono SSm"
@@ -12,6 +16,10 @@
     userId: "6755bc9b-8907-fee5-4a18-ac70cc829b4c"
   "file-icons":
     coloured: false
+  "git-projects":
+    rootPath: "/Users/epogue/Projects"
+  "one-dark-ui":
+    layoutMode: "Compact"
   react:
     enabledForAllJavascriptFiles: true
   "vim-mode-plus":

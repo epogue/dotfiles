@@ -23,10 +23,8 @@ endfunction
 
 " Color
 Plug 'altercation/vim-colors-solarized'
-Plug 'toiffel/base16-vim'
 Plug 'reedes/vim-colors-pencil'
 Plug 'joshdick/onedark.vim'
-Plug 'joshdick/airline-onedark.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
