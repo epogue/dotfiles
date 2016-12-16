@@ -1,1 +1,1 @@
-export EDITOR='open -a Emacs'
+export EDITOR='vimr'

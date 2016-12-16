@@ -56,8 +56,8 @@ if s:darwin
   Plug 'rizzatti/dash.vim'
 endif
 Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist'
 Plug 'slashmili/alchemist.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Browsing
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -79,7 +79,6 @@ if s:darwin
   Plug 'tpope/vim-eunuch'
 endif
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-scripts/ctags.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'bling/vim-airline'
 " Plug 'bling/vim-bufferline'
@@ -122,6 +121,7 @@ silent! set encoding=utf-8
 set list                                      " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 set virtualedit=block
+set termguicolors
 set nojoinspaces
 set noswapfile                                " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set ruler                                     " show the cursor position all the time
@@ -324,24 +324,6 @@ function! s:super_duper_tab(k, o)
   return a:k
 endfunction
 
-if has_key(g:plugs, 'ultisnips')
-  " UltiSnips will be loaded only when tab is first pressed in insert mode
-  if !exists(':UltiSnipsEdit')
-    inoremap <silent> <Plug>(tab) <c-r>=plug#load('ultisnips')?UltiSnips#ExpandSnippet():''<cr>
-    imap <tab> <Plug>(tab)
-  endif
-
-  let g:SuperTabMappingForward  = "<tab>"
-  let g:SuperTabMappingBackward = "<s-tab>"
-  function! SuperTab(m)
-    return s:super_duper_tab(a:m == 'n' ? "\<c-n>" : "\<c-p>",
-                           \ a:m == 'n' ? "\<tab>" : "\<s-tab>")
-  endfunction
-else
-  inoremap <expr> <tab>   <SID>super_duper_tab("\<c-n>", "\<tab>")
-  inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
-endif
-
 " ----------------------------------------------------------------------------
 " Moving lines
 " ----------------------------------------------------------------------------
@@ -429,6 +411,11 @@ nnoremap <Leader>gd :Gdiff<CR>
 autocmd! BufWritePost * Neomake
 
 " ----------------------------------------------------------------------------
+" Deoplete
+" ----------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
+" ----------------------------------------------------------------------------
 " dash.vim
 " ----------------------------------------------------------------------------
 nmap     <Leader>d <Plug>DashSearch
@@ -437,6 +424,12 @@ nmap     <Leader>d <Plug>DashSearch
 " matchit.vim
 " ----------------------------------------------------------------------------
 runtime macros/matchit.vim
+
+" ----------------------------------------------------------------------------
+" matchit.vim
+" ----------------------------------------------------------------------------
+let g:gutentags_cache_dir = '~/.tags_cache'
+
 
 " ----------------------------------------------------------------------------
 " Airline
