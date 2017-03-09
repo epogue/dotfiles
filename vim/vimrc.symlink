@@ -57,7 +57,6 @@ if s:darwin
 endif
 Plug 'c-brenn/phoenix.vim'
 Plug 'slashmili/alchemist.vim'
-Plug 'ludovicchabant/vim-gutentags'
 
 " Browsing
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -121,7 +120,6 @@ silent! set encoding=utf-8
 set list                                      " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 set virtualedit=block
-set termguicolors
 set nojoinspaces
 set noswapfile                                " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set ruler                                     " show the cursor position all the time
@@ -154,6 +152,11 @@ set spellfile=$HOME/.dotfiles/vim/.vim-spell-en.utf-8.add
 let g:onedark_termcolors = 16
 if has('gui_running')
   let g:onedark_termcolors = 256
+endif
+
+if has('gui_vimr')
+  set termguicolors
+  set title
 endif
 
 syntax on
@@ -424,12 +427,6 @@ nmap     <Leader>d <Plug>DashSearch
 " matchit.vim
 " ----------------------------------------------------------------------------
 runtime macros/matchit.vim
-
-" ----------------------------------------------------------------------------
-" matchit.vim
-" ----------------------------------------------------------------------------
-let g:gutentags_cache_dir = '~/.tags_cache'
-
 
 " ----------------------------------------------------------------------------
 " Airline

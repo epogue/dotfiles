@@ -1,1 +1,1 @@
-export EDITOR='vimr'
+export EDITOR='atom'

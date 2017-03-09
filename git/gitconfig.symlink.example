@@ -23,6 +23,7 @@
   status = auto
   branch = auto
   ui = true
+  tool = default-difftool
 [core]
   excludesfile = ~/.gitignore
   editor = vim
@@ -34,6 +35,8 @@
   keepBackup = false
 [difftool]
   prompt = false
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
 [help]
   autocorrect = 1
 [push]
@@ -42,3 +45,5 @@
   #
   # Setting to git 2.0 default to suppress warning message
   default = simple
+[fetch]
+  prune = true

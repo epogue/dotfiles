@@ -27,4 +27,7 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 # Install ctags
 brew install ctags
 
+# Install yarn
+brew install yarn
+
 exit 0
