@@ -22,9 +22,8 @@ function! BuildYCM(info)
 endfunction
 
 " Color
-Plug 'altercation/vim-colors-solarized'
-Plug 'reedes/vim-colors-pencil'
 Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -79,7 +78,8 @@ if s:darwin
 endif
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/matchit.zip'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'bling/vim-bufferline'
 
 call plug#end()
@@ -149,37 +149,24 @@ set splitright
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.dotfiles/vim/.vim-spell-en.utf-8.add
 
-let g:onedark_termcolors = 16
-if has('gui_running')
-  let g:onedark_termcolors = 256
-endif
-
-if has('gui_vimr')
-  set termguicolors
-  set title
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
 
 syntax on
-silent! colo onedark
-set background=dark
-
-" Fix strange sign column color in Solarized
-" augroup colorupdate
-"   autocmd!
-"   autocmd VimEnter,ColorScheme * hi! link SignColumn LineNr
-" augroup END
-
-" FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory 
-" in MacVim (OK in non-GUI version of Vim)
-if has('gui_macvim')
-  set shell=/bin/zsh\ -l
-endif
-
-if has('gui_running')
-  set guifont=Operator Mono SSm:h13
-  " disable left and right scrollbars
-  set guioptions-=r guioptions-=L
-endif
+colorscheme onedark
 
 " For MacVim
 set noimd
@@ -411,7 +398,7 @@ nnoremap <Leader>gd :Gdiff<CR>
 " ----------------------------------------------------------------------------
 " Neomake
 " ----------------------------------------------------------------------------
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 " ----------------------------------------------------------------------------
 " Deoplete
@@ -432,7 +419,7 @@ runtime macros/matchit.vim
 " Airline
 " ----------------------------------------------------------------------------
 
-let g:airline_theme='onedark'
+let g:airline_theme = 'onedark'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_left_alt_sep = '|'
