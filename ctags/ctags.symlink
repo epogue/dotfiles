@@ -1,52 +1,29 @@
---langdef=coffee
---langmap=coffee:.coffee
---regex-coffee=/(^|=[ \t])*class ([A-Za-z_][A-Za-z0-9_]+\.)*([A-Za-z_][A-Za-z0-9_]+)( extends ([A-Za-z][A-Za-z0-9_.]*)+)?$/\3/c,class/
---regex-coffee=/^[ \t]*(module\.)?(exports\.)?@?(([A-Za-z][A-Za-z0-9_.]*)+):.*[-=]>.*$/\3/m,method/
---regex-coffee=/^[ \t]*(module\.)?(exports\.)?(([A-Za-z][A-Za-z0-9_.]*)+)[ \t]*=.*[-=]>.*$/\3/f,function/
---regex-coffee=/^[ \t]*(([A-Za-z][A-Za-z0-9_.]*)+)[ \t]*=[^->\n]*$/\1/v,variable/
---regex-coffee=/^[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)[ \t]*=[^->\n]*$/\1/f,field/
---regex-coffee=/^[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+):[^->\n]*$/\1/f,static field/
---regex-coffee=/^[ \t]*(([A-Za-z][A-Za-z0-9_.]*)+):[^->\n]*$/\1/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?/\3/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){0}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){1}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){2}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){3}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){4}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){5}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){6}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){7}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){8}/\8/f,field/
---regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
-
---langdef=Json
---langmap=Json:.json
---regex-Json=/^[ \t]*"([^"]+)"[ \t]*\:/\1/f,function/
-
---langdef=Cson
---langmap=Cson:.cson
---langmap=Cson:+.gyp
---regex-Cson=/^[ \t]*'([^']+)'[ \t]*\:/\1/f,function/
---regex-Cson=/^[ \t]*"([^"]+)"[ \t]*\:/\1/f,function/
---regex-Cson=/^[ \t]*([^'"]+)[ \t]*\:/\1/f,function/
-
---langmap=C++:+.mm
+--langmap=javascript:.js
+--regex-javascript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*[\(]function[ \t]*\(/\1/f,function,functions/
+--regex-javascript=/^[ \t]*[\(]function[ \t]*([A-Za-z0-9._$]+)/\1/f,function,functions/
+--regex-javascript=/([A-Za-z0-9._$]+)[ \t]*=[ \t]*\{/\1/o,object,objects/
+--regex-javascript=/^[ \t]*([A-Za-z0-9._$]+)[ \t]*[:][ \t]*[^\{]/\1/p,property,properties/
+--regex-javascript=/^[ \t]+(var|let|const)[ \t]*([A-Za-z0-9._$]+)[ \t]*=[ \t]*[\d"'\[]/\2/v,variable,variables/
+--regex-javascript=/\/\/[ \t]*(TODO)[ \t]*\:*(.*)/\1/i,TODO/
+--regex-javascript=/\/\/[ \t]*(FIXME)[ \t]*\:*(.*)/\1/i,FIXME/
 
 --langmap=Ruby:+(Rakefile)
 
---exclude=*node_modules/*
-
---JavaScript-kinds=fcm
-
---langdef=css
---langmap=css:.css
---langmap=css:+.scss
---langmap=css:+.sass
---langmap=css:+.styl
---langmap=css:+.less
---regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
---regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
---regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/.\1/c,class,classes/
+--langdef=scss
+--langmap=scss:.scss
+--regex-scss=/^[ \t]*@mixin ([A-Za-z0-9_-]+)/\1/m,mixin,mixins/
+--regex-scss=/^[ \t]*\$([A-Za-z0-9_-]+)/\1/v,variable,variables/
+--regex-scss=/^([A-Za-z0-9_-]*)*\.([A-Za-z0-9_-]+) *[,{]/\2/c,class,classes/
+--regex-scss=/^[ \t&]+\.([A-Za-z0-9_-]+) *[,{]/\1/c,class,classes/
+--regex-scss=/^(.*)*\#([A-Za-z0-9_-]+) *[,{]/\2/i,id,ids/
+--regex-scss=/^[ \t&]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
+--regex-scss=/(^([A-Za-z0-9_-])*([A-Za-z0-9_-]+)) *[,|\{]/\1/t,tag,tags/
+--regex-scss=/(^([^\/\/])*)[ \t]+([A-Za-z0-9_-]+)) *[,|\{]/\3/t,tag,tags/
+--regex-scss=/(^(.*, *)([A-Za-z0-9_-]+)) *[,|\{]/\3/t,tag,tags/
+--regex-scss=/(^[ \t]+([A-Za-z0-9_-]+)) *[,|\{]/\1/t,tag,tags/
+--regex-scss=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/d,media,media/
+--regex-scss=/\/\/[ \t]*(TODO)[ \t]*\:*(.*)/\1/i,TODO/
+--regex-scss=/\/\/[ \t]*(FIXME)[ \t]*\:*(.*)/\1/i,FIXME/
 
 --langdef=Elixir
 --langmap=Elixir:.ex.exs
@@ -61,3 +38,36 @@
 --regex-Elixir=/^[ \t]*defprotocol[ \t]+([A-Z][a-zA-Z0-9_]*\.)*([A-Z][a-zA-Z0-9_?!]*)/\2/p,protocols,protocols (defprotocol...)/
 --regex-Elixir=/^[ \t]*Record\.defrecord[ \t]+:([a-zA-Z0-9_]+)/\1/r,records,records (defrecord...)/
 --regex-Elixir=/^[ \t]*test[ \t]+\"([a-z_][a-zA-Z0-9_?! ]*)\"*/\1/t,tests,tests (test ...)/
+
+--regex-html=/id="([A-Za-z0-9_-]+)"/\1/i,id,ids/
+--regex-html=/class="([A-Za-z0-9_-]+)"/\1/c,class,classes/
+
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^(#+[ \t]+.*)/\1/h,heading,headings/
+
+--langmap=vim:+(vimrc)
+
+--exclude=.git
+--exclude=.svn
+--exclude=.hg
+--exclude=min
+--exclude=vendor
+--exclude=\*.min.\*
+--exclude=\*.map
+--exclude=\*.swp
+--exclude=\*.bak
+--exclude=\*.pyc
+--exclude=\*.class
+--exclude=\*.sln
+--exclude=\*.Master
+--exclude=\*.csproj
+--exclude=\*.csproj.user
+--exclude=\*.cache
+--exclude=\*.dll
+--exclude=\*.pdb
+--exclude=tags
+--exclude=cscope.\*
+--exclude=\*.tar.\*
+--exclude=node_modules
+--exclude=bower_components
