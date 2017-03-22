@@ -7,7 +7,7 @@
 # -------------------------------------------------------------------
 # Session options
 # -------------------------------------------------------------------
-# Change bind key to ctrl-a
+# Change bind key to ctrl-s
 unbind-key C-b
 set -g prefix C-s
 
