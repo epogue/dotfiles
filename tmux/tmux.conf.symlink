@@ -9,7 +9,7 @@
 # -------------------------------------------------------------------
 # Change bind key to ctrl-s
 unbind-key C-b
-set -g prefix C-s
+set -g prefix C-a
 
 # 1-based index
 set -g base-index 1
@@ -116,7 +116,7 @@ bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-m
 # -------------------------------------------------------------------
 set -g status-left-length 50
 
-set -g status-right " #{battery_percentage} | #(date '+%a, %b %d - %I:%M') "
+set -g status-right " #{battery_percentage}#{battery_icon} | #(date '+%a, %b %d - %I:%M') "
 
 #### Solarized dark
 
@@ -189,11 +189,21 @@ set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
 # -------------------------------------------------------------------
 # Plugins
 # -------------------------------------------------------------------
+# Plugin options
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-strategy-nvim 'session'
+set -g @continuum-restore 'on'
+
+# Plugin
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'christoomey/vim-tmux-navigator'
+
+# Automatically install tpm on new machines
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
