@@ -45,6 +45,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Lang
 Plug 'sheerun/vim-polyglot'
 Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-rails'
@@ -104,7 +105,8 @@ set backspace=indent,eol,start
 " set ttimeout
 set timeoutlen=500
 " set ttimeoutlen=0
-" set colorcolumn=80
+set textwidth=80
+set colorcolumn=+1
 set hlsearch                                  " Highlight searches
 set incsearch
 set ignorecase smartcase
@@ -616,6 +618,9 @@ augroup vimrc
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+  " Run Neoformat on save
+  autocmd BufWritePre *.js Neoformat
 
   " Autobalance when resized
   " autocmd VimResized * :wincmd =
