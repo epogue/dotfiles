@@ -22,10 +22,26 @@
   core:
     closeDeletedFileTabs: true
     closeEmptyWindows: false
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "background-tips"
       "exception-reporting"
       "metrics"
+      "linter"
+      "busy-signal"
+      "intentions"
+      "linter-ui-default"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
@@ -38,19 +54,32 @@
       "vendor"
     ]
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "oceanic-next"
+    ]
   editor:
-    fontFamily: "Menlo"
-    fontSize: 15
+    fontFamily: "Operator Mono SSm"
+    fontSize: 13
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
+  "git-projects":
+    rootPath: "/Users/epogue/Projects"
   "go-plus":
     panelDisplayMode: "closed"
-  "linter-eslint":
-    useGlobalEslint: true
+  "language-babel":
+    autoIndentJSX: true
+  "linter-eslint": {}
+  nuclide:
+    "nuclide-file-tree":
+      showUncommittedChanges: false
+    "nuclide-home":
+      showHome: false
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
+      isDisabledIfNotInPackageJson: true
   "release-notes":
     viewedVersion: "0.89.0"
   "spell-check":
@@ -69,5 +98,5 @@
     autoIndent: true
 ".js.jsx.source":
   editor:
-    autoIndent: false
-    autoIndentOnPaste: false
+    autoIndent: true
+    autoIndentOnPaste: true

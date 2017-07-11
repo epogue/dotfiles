@@ -1,0 +1,2 @@
+'atom-text-editor:not([mini])':
+  'shift-cmd-K': 'editor:delete-line'
