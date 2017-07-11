@@ -40,3 +40,6 @@
   default = simple
 [fetch]
   prune = true
+[user]
+	name = Elliott Pogue
+	email = epogue@gmail.com
