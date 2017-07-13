@@ -42,6 +42,7 @@
       "busy-signal"
       "intentions"
       "linter-ui-default"
+      "tree-view"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
