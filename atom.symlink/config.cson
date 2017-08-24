@@ -42,7 +42,6 @@
       "busy-signal"
       "intentions"
       "linter-ui-default"
-      "tree-view"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
@@ -57,7 +56,7 @@
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
-      "oceanic-next"
+      "dracula-syntax"
     ]
   editor:
     fontFamily: "Operator Mono SSm"

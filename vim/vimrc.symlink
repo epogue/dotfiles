@@ -41,12 +41,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'austintaylor/vim-indentobject'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Lang
 Plug 'sheerun/vim-polyglot'
 Plug 'neomake/neomake'
-Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/tsuquyomi', { 'do' : 'make' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'
@@ -187,6 +186,9 @@ let g:html_indent_tags = 'li\|p'
 noremap <C-F> <C-D>
 noremap <C-B> <C-U>
 
+" omni-completion
+inoremap <Nul> <C-x><C-o>
+
 " Save
 inoremap <C-s>      <C-O>:update<cr>
 nnoremap <C-s>      :update<cr>
@@ -284,41 +286,6 @@ vnoremap // y/<C-R>"<CR>
 map <leader>gf :vsplit <cfile><cr>
 
 " ----------------------------------------------------------------------------
-" <tab> / <s-tab> / <c-v><tab> | super-duper-tab
-" ----------------------------------------------------------------------------
-function! s:can_complete(func, prefix)
-  if empty(a:func) || call(a:func, [1, '']) < 0
-    return 0
-  endif
-  let result = call(a:func, [0, matchstr(a:prefix, '\k\+$')])
-  return !empty(type(result) == type([]) ? result : result.words)
-endfunction
-
-function! s:super_duper_tab(k, o)
-  if pumvisible()
-    return a:k
-  endif
-
-  let line = getline('.')
-  let col = col('.') - 2
-  if line[col] !~ '\k\|[/~.]'
-    return a:o
-  endif
-
-  let prefix = expand(matchstr(line[0:col], '\S*$'))
-  if prefix =~ '^[~/.]'
-    return "\<c-x>\<c-f>"
-  endif
-  if s:can_complete(&omnifunc, prefix)
-    return "\<c-x>\<c-o>"
-  endif
-  if s:can_complete(&completefunc, prefix)
-    return "\<c-x>\<c-u>"
-  endif
-  return a:k
-endfunction
-
-" ----------------------------------------------------------------------------
 " Moving lines
 " ----------------------------------------------------------------------------
 " nnoremap <silent> <C-k> :move-2<cr>
@@ -400,11 +367,6 @@ nnoremap <Leader>gd :Gdiff<CR>
 " autocmd! BufWritePost * Neomake
 
 " ----------------------------------------------------------------------------
-" Deoplete
-" ----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-
-" ----------------------------------------------------------------------------
 " dash.vim
 " ----------------------------------------------------------------------------
 nmap     <Leader>d <Plug>DashSearch
@@ -437,10 +399,10 @@ let g:airline_right_alt_sep = '|'
 nnoremap <silent> <Leader>t :Files<cr>
 nnoremap <silent> <Leader>b :Buffers<cr>
 nnoremap <silent> <Leader>. :Tags<cr>
-nnoremap <silent> <Leader>\ :Find<cr>
+nnoremap <silent> <Leader>\ :Ag<cr>
 
-command! -bang -nargs=* Find
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+" command! -bang -nargs=* Find
+"   \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
 
 " ----------------------------------------------------------------------------
@@ -584,7 +546,7 @@ augroup vimrc
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Run Neoformat on save
-  autocmd BufWritePre *.js Neoformat
+  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
 
   " Autobalance when resized
   " autocmd VimResized * :wincmd =
