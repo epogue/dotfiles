@@ -24,7 +24,6 @@ endfunction
 " Color
 Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'dracula/vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -54,6 +53,7 @@ Plug 'tpope/vim-rails'
 Plug 'thoughtbot/vim-rspec'
 Plug 'kana/vim-textobj-user'
 Plug 'Glench/Vim-Jinja2-Syntax'           " For liquid
+Plug 'mattn/emmet-vim'
 if s:darwin
   Plug 'rizzatti/dash.vim'
 endif
@@ -164,7 +164,7 @@ if (has("termguicolors"))
 endif
 
 syntax on
-colorscheme dracula
+colorscheme onedark
 
 " For MacVim
 set noimd
@@ -380,7 +380,7 @@ runtime macros/matchit.vim
 " Airline
 " ----------------------------------------------------------------------------
 
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'onedark'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_left_alt_sep = '|'
