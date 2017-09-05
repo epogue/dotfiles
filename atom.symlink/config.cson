@@ -1,4 +1,8 @@
 "*":
+  "activate-power-mode":
+    plugins:
+      playAudio: true
+      screenShake: true
   "atom-beautify":
     crystal:
       beautify_on_save: true
@@ -42,6 +46,7 @@
       "busy-signal"
       "intentions"
       "linter-ui-default"
+      "tree-view"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
@@ -54,14 +59,12 @@
       "vendor"
     ]
     telemetryConsent: "no"
-    themes: [
-      "one-dark-ui"
-      "dracula-syntax"
-    ]
   editor:
-    fontFamily: "Operator Mono SSm"
+    fontFamily: "Fira Code"
     fontSize: 13
     invisibles: {}
+    ligatures: true
+    lineHeight: 1.65
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
   "git-projects":
