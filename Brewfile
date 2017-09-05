@@ -13,6 +13,7 @@ brew 'rbenv'
 brew 'erlang'
 brew 'spark'
 brew 'youtube-dl'
+brew 'reattach-to-user-namespace'
 
 cask 'atom'
 cask 'slack'
