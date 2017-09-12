@@ -35,7 +35,6 @@ endif
 Plug 'junegunn/vim-easy-align',       { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Auto-align delimiters
 Plug 'Raimondi/delimitMate'           " Auto-match tags
 Plug 'tpope/vim-endwise'              " Auto-insert end delimiter in Ruby
-Plug 'alvan/vim-closetag'             " Auto-insert ending tags
 Plug 'tpope/vim-commentary'           " Commenting lines
 Plug 'tpope/vim-surround'             " The best plugin ever
 Plug 'editorconfig/editorconfig-vim'  " Parse .editorconfig files
@@ -44,6 +43,7 @@ Plug 'austintaylor/vim-indentobject'  " Adds an indent object (i) for motions
 
 " Lang
 Plug 'sheerun/vim-polyglot'           " Autoload syntaxes
+Plug 'styled-components/vim-styled-components' " styled-components syntax
 Plug 'w0rp/ale'                       " Async linting
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " Autocompletion
 Plug 'Shougo/neco-syntax'             " Syntax-based autocompletion source
@@ -217,29 +217,6 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
-" Movement in insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-l> <C-o>a
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-^> <C-o><C-^>
-
-" Quicker mappings for moving between panes
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-if has('nvim')
-  tnoremap <C-w>h <C-\><C-n><C-w>h
-  tnoremap <C-w>j <C-\><C-n><C-w>j
-  tnoremap <C-w>k <C-\><C-n><C-w>k
-  tnoremap <C-w>l <C-\><C-n><C-w>l
-  tnoremap <A-h> <C-\><C-n><C-w>h
-  tnoremap <A-j> <C-\><C-n><C-w>j
-  tnoremap <A-k> <C-\><C-n><C-w>k
-  tnoremap <A-l> <C-\><C-n><C-w>l
-endif
-
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
@@ -351,6 +328,18 @@ nnoremap <Leader>gd :Gdiff<CR>
 " Deoplete
 " ----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
+
+" ----------------------------------------------------------------------------
+" Neosnippets
+" ----------------------------------------------------------------------------
+" SuperTab like snippets' behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+  \ neosnippet#expandable_or_jumpable() ?
+  \    "\<Plug>(neosnippet_expand_or_jump)" :
+  \     pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " ----------------------------------------------------------------------------
 " dash.vim

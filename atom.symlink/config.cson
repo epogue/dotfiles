@@ -3,6 +3,8 @@
     plugins:
       playAudio: true
       screenShake: true
+  "advanced-open-file":
+    createDirectories: true
   "atom-beautify":
     crystal:
       beautify_on_save: true
@@ -42,11 +44,9 @@
       "background-tips"
       "exception-reporting"
       "metrics"
-      "linter"
       "busy-signal"
       "intentions"
-      "linter-ui-default"
-      "tree-view"
+      "spell-check"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
@@ -67,6 +67,8 @@
     lineHeight: 1.65
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
+  "file-icons":
+    coloured: false
   "git-projects":
     rootPath: "/Users/epogue/Projects"
   "go-plus":
@@ -74,6 +76,8 @@
   "language-babel":
     autoIndentJSX: true
   "linter-eslint": {}
+  "linter-ui-default":
+    panelHeight: 300
   nuclide:
     "nuclide-file-tree":
       showUncommittedChanges: false
@@ -81,7 +85,6 @@
       showHome: false
   "prettier-atom":
     formatOnSaveOptions:
-      enabled: true
       isDisabledIfNotInPackageJson: true
   "release-notes":
     viewedVersion: "0.89.0"
