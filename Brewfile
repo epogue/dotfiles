@@ -1,7 +1,7 @@
 cask_args appdir: '/Applications'
 
-tap 'homebrew/bundle'
-
+brew 'mas'
+brew 'zsh'
 brew 'ack'
 brew 'coreutils'
 brew 'grc'
@@ -15,7 +15,12 @@ brew 'spark'
 brew 'youtube-dl'
 brew 'reattach-to-user-namespace'
 
-cask 'atom'
+cask 'dropbox'
 cask 'slack'
 cask 'google-chrome'
 cask 'visual-studio-code'
+cask 'alfred'
+cask 'dash'
+
+mas '1Password', id: 443987910
+mas 'Trello', id: 1278508951
