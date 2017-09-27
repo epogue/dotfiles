@@ -1,5 +1,5 @@
 #!/bin/sh
-# Installs vundle and vundle file
+# Installs Plug and plugs
 
 if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
