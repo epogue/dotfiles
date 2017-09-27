@@ -1,1 +1,6 @@
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+#!/bin/sh
+#
+# NVM
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+exit 0
