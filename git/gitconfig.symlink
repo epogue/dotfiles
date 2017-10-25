@@ -19,7 +19,7 @@
   tool = default-difftool
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = nvim
 [commit]
   template = ~/.dotfiles/git/gitmessage
 [apply]

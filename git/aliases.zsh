@@ -6,6 +6,9 @@ then
   alias git=$hub_path
 fi
 
+# Needs completion
+alias g='git'
+
 # The rest of my fun git aliases
 alias ga='git add'
 alias gl='git pull --prune'

@@ -65,3 +65,5 @@ export NVM_DIR="$HOME/.nvm"
 # npm install -g pure-prompt
 autoload -Uz promptinit; promptinit
 prompt pure
+
+export PATH=$HOME/Library/Python/3.6/bin:$PATH

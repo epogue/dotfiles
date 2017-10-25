@@ -9,7 +9,7 @@
 # -------------------------------------------------------------------
 # Change bind key to ctrl-s
 unbind-key C-b
-set -g prefix C-a
+set -g prefix C-s
 
 # 1-based index
 set -g base-index 1
@@ -29,9 +29,6 @@ set -g display-time 4000
 
 # Repeat time limit (ms)
 set -g repeat-time 500
-
-# Set for OS X
-set -g default-command "reattach-to-user-namespace -l $SHELL"
 
 # 256-color terminal
 set -g default-terminal "xterm-256color"
@@ -57,7 +54,7 @@ set -g other-pane-width 80
 # Key bindings
 # -------------------------------------------------------------------
 # prefix a
-bind -r C-a send-prefix
+bind -r C-s send-prefix
 
 # Easier splits
 bind-key - split-window -v -c "#{pane_current_path}"
@@ -93,8 +90,8 @@ bind -n C-S-Up resize-pane -U 5
 bind-key b break-pane -d
 
 # Setup 'v' to begin selection as in Vim
-bind-key -T copy-mode-vi v begin-selection
-bind-key -T copy-mode-vi y copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi y send -X copy-selection
 
 # Switch session
 bind-key C-j split-window -v "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"

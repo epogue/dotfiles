@@ -24,33 +24,34 @@ endfunction
 " Color
 Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'dracula/vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
 if v:version >= 703
-  Plug 'mhinz/vim-signify'            " Git status in gutter
+  Plug 'mhinz/vim-signify'                " Git status in gutter
 endif
 
 " Edit
 Plug 'junegunn/vim-easy-align',       { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Auto-align delimiters
-Plug 'Raimondi/delimitMate'           " Auto-match tags
-Plug 'tpope/vim-endwise'              " Auto-insert end delimiter in Ruby
-Plug 'tpope/vim-commentary'           " Commenting lines
-Plug 'tpope/vim-surround'             " The best plugin ever
-Plug 'editorconfig/editorconfig-vim'  " Parse .editorconfig files
-Plug 'kana/vim-textobj-user'          " Create your own text objects
-Plug 'austintaylor/vim-indentobject'  " Adds an indent object (i) for motions
+Plug 'Raimondi/delimitMate'               " Auto-match tags
+Plug 'tpope/vim-endwise'                  " Auto-insert end delimiter in Ruby
+Plug 'tpope/vim-commentary'               " Commenting lines
+Plug 'tpope/vim-surround'                 " The best plugin ever
+Plug 'editorconfig/editorconfig-vim'      " Parse .editorconfig files
+Plug 'kana/vim-textobj-user'              " Create your own text objects
+Plug 'austintaylor/vim-indentobject'      " Adds an indent object (i) for motions
 
 " Lang
-Plug 'sheerun/vim-polyglot'           " Autoload syntaxes
+Plug 'sheerun/vim-polyglot'               " Autoload syntaxes
 Plug 'styled-components/vim-styled-components' " styled-components syntax
-Plug 'w0rp/ale'                       " Async linting
+Plug 'w0rp/ale'                           " Async linting
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " Autocompletion
-Plug 'Shougo/neco-syntax'             " Syntax-based autocompletion source
-Plug 'wokalski/autocomplete-flow'     " Flow autocompletion source
-Plug 'mhartington/nvim-typescript'    " TypeScript autocompletion source
-Plug 'Shougo/neosnippet.vim'          " Snippets
-Plug 'Shougo/neosnippet-snippets'     " Default snippets
+Plug 'Shougo/neco-syntax'                 " Syntax-based autocompletion source
+Plug 'wokalski/autocomplete-flow'         " Flow autocompletion source
+Plug 'Shougo/neosnippet.vim'              " Snippets
+Plug 'Shougo/neosnippet-snippets'         " Default snippets
 Plug 'sbdchd/neoformat'                   " Formatting
 Plug 'tpope/vim-rails'                    " Rails-specific features
 Plug 'thoughtbot/vim-rspec'               " Quick access to RSpec runners
@@ -98,6 +99,7 @@ set autoindent
 set smartindent
 set lazyredraw
 set laststatus=2                              " Always display the status line
+set tabline=2
 set showcmd
 " set clipboard=unnamed                       " Use system clipboard
 set visualbell
@@ -128,6 +130,8 @@ set showcmd                                   " display incomplete commands
 set nowrap
 set linebreak                                 " breaks lines at reasonable locations
 set completeopt=menuone,preview,longest
+set hidden                                    " necessary for actions that modify multiple buffers
+set signcolumn="yes"
 
 set mouse=a
 if exists('$TMUX') && !has('nvim')  " Support resizing in tmux
@@ -156,7 +160,7 @@ if (has("termguicolors"))
 endif
 
 syntax on
-colorscheme onedark
+colorscheme palenight
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -355,13 +359,12 @@ runtime macros/matchit.vim
 " Airline
 " ----------------------------------------------------------------------------
 
-let g:airline_theme = 'onedark'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 0
-let g:airline_left_sep=''
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep=''
-let g:airline_right_alt_sep = '|'
-
+let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_nr_format = '%s '
+" let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ----------------------------------------------------------------------------
 " FZF
@@ -373,7 +376,7 @@ let g:airline_right_alt_sep = '|'
 " Keybindings
 nnoremap <silent> <Leader>t :Files<cr>
 nnoremap <silent> <Leader>b :Buffers<cr>
-nnoremap <silent> <Leader>. :Tags<cr>
+" nnoremap <silent> <Leader>. :Tags<cr>
 nnoremap <silent> <Leader>\ :Ag<cr>
 
 " command! -bang -nargs=* Find
@@ -457,6 +460,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+
 
 " }}}
 " ============================================================================
