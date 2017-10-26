@@ -21,7 +21,7 @@ function! BuildYCM(info)
   endif
 endfunction
 
-" Color
+" Theming
 Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -211,6 +211,7 @@ xnoremap <C-c> <Esc>
 
 " Movement between splits and tmux panes
 let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_disable_when_zoomed = 1
 
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 if has("nvim")
@@ -362,9 +363,9 @@ runtime macros/matchit.vim
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#ale#enabled = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#buffer_nr_format = '%s '
-" let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s '
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ----------------------------------------------------------------------------
 " FZF
@@ -530,6 +531,16 @@ augroup vimrc
 
   " Autobalance when resized
   " autocmd VimResized * :wincmd =
+
+  " Set proper filetype for common JSON-like files
+  autocmd BufRead .jscsrc set filetype=json
+  autocmd BufRead .jshintrc set filetype=json
+  autocmd BufRead .bowerrc set filetype=json
+  autocmd BufRead .stylelintrc set filetype=json
+  autocmd BufRead .babelrc set filetype=json
+  autocmd BufRead .eslintrc set filetype=json
+  autocmd BufRead .tslintrc set filetype=json
+  autocmd BufRead .dojorc set filetype=json
 augroup END
 
 " }}}

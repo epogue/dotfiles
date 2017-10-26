@@ -1,0 +1,29 @@
+name: iggbo
+root: ~/Projects/iggbo/
+
+windows:
+  - app-web:
+      root: ~/Projects/iggbo/app-web/
+      panes:
+        - nvim
+  - core-api:
+      root: ~/Projects/iggbo/core-api/
+      panes:
+        - nvim
+  - app-web-server:
+      root: ~/Projects/iggbo/app-web/
+      panes:
+        - app-web:
+          - npm run getenvs
+          - npm run local
+        - watch-js:
+          - npm run watch-js
+        - watch-css:
+          - npm run watch-css
+  - core-api-server:
+      root: ~/Projects/iggbo/core-api/
+      panes:
+        - core-api:
+          - npm run getenvs
+          - npm run bootstrap
+          - npm run local
