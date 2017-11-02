@@ -39,6 +39,7 @@ cask "iterm2"
 cask "postman"
 cask "google-chrome"
 cask "visual-studio-code"
+cask "dropbox"
 cask "font-fira-code"
 
 mas "1Password", id: 443987910
