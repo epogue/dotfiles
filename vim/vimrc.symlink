@@ -62,6 +62,7 @@ if s:darwin
 endif
 Plug 'c-brenn/phoenix.vim'                " Phoenix-specific features
 Plug 'slashmili/alchemist.vim'            " Elixir language server
+Plug 'hail2u/vim-css3-syntax'             " CSS3 language
 
 " Browsing
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }   " Awesome runner interface
