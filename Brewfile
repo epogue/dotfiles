@@ -31,6 +31,7 @@ brew "tmux"
 brew "neovim"
 brew "heroku"
 brew "imagemagick"
+brew "watchman"
 
 cask "alfred"
 cask "dash"
