@@ -45,7 +45,8 @@ Plug 'austintaylor/vim-indentobject'      " Adds an indent object (i) for motion
 
 " Lang
 Plug 'sheerun/vim-polyglot'               " Autoload syntaxes
-Plug 'styled-components/vim-styled-components' " styled-components syntax
+Plug 'pangloss/vim-javascript'            " For JS
+Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite' } " styled-components syntax
 Plug 'w0rp/ale'                           " Async linting
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " Autocompletion
 Plug 'Shougo/neco-syntax'                 " Syntax-based autocompletion source
@@ -63,6 +64,7 @@ endif
 Plug 'c-brenn/phoenix.vim'                " Phoenix-specific features
 Plug 'slashmili/alchemist.vim'            " Elixir language server
 Plug 'hail2u/vim-css3-syntax'             " CSS3 language
+Plug 'autozimu/LanguageClient-neovim',    { 'do': ':UpdateRemotePlugins' }
 
 " Browsing
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }   " Awesome runner interface
@@ -464,6 +466,20 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 
+" ----------------------------------------------------------------------------
+" LanguageClient-neovim
+" ----------------------------------------------------------------------------
+let g:LanguageClient_serverCommands = {
+    \ 'typescript': ['node', '/Users/epogue/Projects/javascript-typescript-langserver/lib/language-server-stdio'],
+    \ 'javascript.jsx': ['node', '/Users/epogue/Projects/javascript-typescript-langserver/lib/language-server-stdio']
+    \ }
+
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " }}}
 " ============================================================================
@@ -528,7 +544,7 @@ augroup vimrc
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Run Neoformat on save
-  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
+  " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
 
   " Autobalance when resized
   " autocmd VimResized * :wincmd =

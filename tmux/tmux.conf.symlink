@@ -53,7 +53,7 @@ set -g other-pane-width 80
 # -------------------------------------------------------------------
 # Key bindings
 # -------------------------------------------------------------------
-# prefix a
+# prefix s
 bind -r C-s send-prefix
 
 # Easier splits
