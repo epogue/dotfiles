@@ -59,10 +59,6 @@
       "vendor"
     ]
     telemetryConsent: "no"
-    themes: [
-      "one-dark-ui"
-      "city-lights-syntax"
-    ]
   editor:
     fontFamily: "Fira Code"
     fontSize: 13
