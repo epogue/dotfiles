@@ -118,6 +118,13 @@ bind-key C-b send-keys 'tat & exit' 'C-m'
 # Kill session
 bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session'
 
+set -g @resurrect-save 'S'
+set -g @resurrect-restore 'R'
+
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'iterm'
+set -g @continuum-restore 'on'
+
 # -------------------------------------------------------------------
 # Decoration (256-color)
 # -------------------------------------------------------------------
@@ -205,6 +212,7 @@ set -g @continuum-restore 'on'
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
