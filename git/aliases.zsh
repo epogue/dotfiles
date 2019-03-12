@@ -7,7 +7,7 @@ then
 fi
 
 # Needs completion
-alias g='git'
+# alias g='git'
 
 # The rest of my fun git aliases
 alias ga='git add'
