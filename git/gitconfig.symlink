@@ -21,10 +21,8 @@
   tool = default-difftool
 [core]
   excludesfile = ~/.gitignore
-  editor = nvim
-  ignorecase = false
-[commit]
-  template = ~/.dotfiles/git/gitmessage
+  editor = vim
+	ignorecase = false
 [apply]
   whitespace = nowarn
 [mergetool]
