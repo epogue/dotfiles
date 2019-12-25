@@ -7,18 +7,22 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "caskroom/cask"
 tap "caskroom/fonts"
+tap "getantibody/tap"
 
 cask "java"
 
 brew "mas"
 brew "zsh"
+brew "antibody"
 brew "ack"
 brew "coreutils"
 brew "openssl"
 brew "kryptco/tap/kr", args: ["devel"]
 brew "the_silver_searcher"
+brew "ripgrep"
 brew "grc"
 brew "hub"
+
 brew "elasticsearch@2.4", restart_service: true
 brew "postgresql", restart_service: true
 brew "mysql", restart_service: true
@@ -39,6 +43,7 @@ cask "slack"
 cask "iterm2"
 cask "postman"
 cask "google-chrome"
+cask "spotify"
 cask "visual-studio-code"
 cask "dropbox"
 cask "font-fira-code"
