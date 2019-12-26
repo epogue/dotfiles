@@ -19,7 +19,7 @@
 ;; font string. You generally only need these two:
 ;; test
 (setq doom-font (font-spec :family "SF Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "SF Mono"))
+      doom-variable-pitch-font (font-spec :family "Avenir Next" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -35,6 +35,27 @@
 
 ;; Increase line height
 (setq-default line-spacing 5)
+
+;; Window size
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Projectile
+(setq projectile-project-search-path '("~/Projects"))
+
+;; Elixir
+(setq lsp-clients-elixir-server-executable "elixir-ls")
+
+;; Wakatime config
+(use-package! wakatime-mode
+  :init
+  (setq wakatime-api-key "0cbec2ee-baf8-4c4f-8622-c545bdc0d359"
+        wakatime-cli-path "/usr/local/bin/wakatime")
+  :config
+  (global-wakatime-mode +1))
+
+;; Custom keybinds
+(map! :leader
+      :desc "Find file using FZF" "SPC" #'counsel-fzf)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

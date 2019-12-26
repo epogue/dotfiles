@@ -42,10 +42,12 @@ cask "dash"
 cask "slack"
 cask "iterm2"
 cask "postman"
+cask "steermouse"
 cask "google-chrome"
 cask "spotify"
-cask "visual-studio-code"
 cask "dropbox"
+cask "emacs"
+cask "visual-studio-code"
 cask "font-fira-code"
 
 mas "1Password", id: 443987910
