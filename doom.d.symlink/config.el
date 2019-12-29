@@ -21,20 +21,27 @@
 (setq doom-font (font-spec :family "SF Mono" :size 14)
       doom-variable-pitch-font (font-spec :family "Avenir Next" :size 14))
 
+;; Increase line height
+(setq-default line-spacing 5)
+
+;; Evil mode config
+(setq scroll-margin 10)
+
+;; Doom Modeline
+(setq doom-modeline-buffer-file-name-style 'buffer-name)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
 (setq doom-theme 'doom-one)
 
 ;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/org/")
+(setq org-directory "~/Dropbox (Personal)/org/"
+      org-todo-keywords '((sequence "TODO(t)" "STRT(s)" "WAIT(w)" "DONE(d)")))
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
 (setq display-line-numbers-type t)
-
-;; Increase line height
-(setq-default line-spacing 5)
 
 ;; Window size
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -44,6 +51,7 @@
 
 ;; Elixir
 (setq lsp-clients-elixir-server-executable "elixir-ls")
+(set-docsets! 'elixir-mode "Elixir")
 
 ;; Wakatime config
 (use-package! wakatime-mode
