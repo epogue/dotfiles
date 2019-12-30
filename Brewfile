@@ -1,15 +1,12 @@
 cask_args appdir: "/Applications"
 
-tap "kryptco/tap"
 tap "heroku/brew"
 tap "homebrew/core"
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "caskroom/cask"
-tap "caskroom/fonts"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "getantibody/tap"
-
-cask "java"
 
 brew "mas"
 brew "zsh"
@@ -17,7 +14,6 @@ brew "antibody"
 brew "ack"
 brew "coreutils"
 brew "openssl"
-brew "kryptco/tap/kr", args: ["devel"]
 brew "the_silver_searcher"
 brew "ripgrep"
 brew "grc"
