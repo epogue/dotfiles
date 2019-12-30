@@ -20,7 +20,6 @@ brew "grc"
 brew "hub"
 brew "thefuck"
 
-brew "elasticsearch@2.4", restart_service: true
 brew "postgresql", restart_service: true
 brew "mysql", restart_service: true
 brew "redis", restart_service: true
@@ -38,6 +37,7 @@ cask "1password"
 cask "alfred"
 cask "dash"
 cask "slack"
+cask "discord"
 cask "iterm2"
 cask "postman"
 cask "steermouse"
