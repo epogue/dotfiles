@@ -18,6 +18,7 @@ brew "the_silver_searcher"
 brew "ripgrep"
 brew "grc"
 brew "hub"
+brew "thefuck"
 
 brew "elasticsearch@2.4", restart_service: true
 brew "postgresql", restart_service: true
