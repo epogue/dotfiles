@@ -26,6 +26,7 @@ brew "redis", restart_service: true
 brew "rbenv"
 brew "ruby-build"
 brew "erlang"
+brew "elixir"
 brew "spark"
 brew "tmux"
 brew "neovim"
