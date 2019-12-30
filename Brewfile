@@ -37,6 +37,7 @@ brew "heroku"
 brew "imagemagick"
 brew "watchman"
 
+cask "1password"
 cask "alfred"
 cask "dash"
 cask "slack"
@@ -50,13 +51,12 @@ cask "emacs"
 cask "visual-studio-code"
 cask "font-fira-code"
 
-mas "1Password", id: 443987910
-mas "Trello", id: 1278508951
 mas "Spark", id: 1176895641
 mas "Magnet", id: 441258766
-mas "QuickBooks", id: 640830064
+mas "1Blocker", id: 1107421413
+mas "JSON Peep for Safari", id: 1458969831
+mas "Twitter", id: 1482454543
 mas "Frank DeLoupe", id: 530458789
 mas "Numbers", id: 409203825
 mas "PDF Expert", id: 1055273043
-mas "PiPifier", id: 1160374471
 mas "Xcode", id: 497799835

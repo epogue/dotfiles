@@ -36,8 +36,13 @@
 (setq doom-theme 'doom-one)
 
 ;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/Dropbox (Personal)/org/"
-      org-todo-keywords '((sequence "TODO(t)" "STRT(s)" "WAIT(w)" "DONE(d)")))
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup)
+  (setq org-directory "~/Documents/Notes/"
+        org-agenda-files (ignore-errors (directory-files org-directory t "\\.org$" t))
+        org-todo-keywords '((sequence "TODO(t)" "STRT(s)" "WAIT(w)" "DONE(d)"))))
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
