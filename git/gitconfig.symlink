@@ -52,3 +52,5 @@
 	email = epogue@gmail.com
 [github]
 	user = epogue@gmail.com
+[credential]
+	helper = osxkeychain

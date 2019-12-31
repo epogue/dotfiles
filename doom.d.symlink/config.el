@@ -8,6 +8,10 @@
 (setq user-full-name "Elliott Pogue"
       user-mail-address "epogue@gmail.com")
 
+;; Set our projects directory for use later on
+(defvar projects-dir (substitute-in-file-name "$PROJECTS"))
+(message projects-dir)
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -52,7 +56,15 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Projectile
-(setq projectile-project-search-path '("~/Projects"))
+(setq projectile-project-search-path
+      (let ((subdirs (directory-files projects-dir t)))
+        (remove nil
+                (mapcar
+                 (lambda (dir)
+                   (when (and (file-directory-p dir)
+                              (not (member (file-name-nondirectory dir) '(".." "."))))
+                     dir))
+                 subdirs))))
 
 ;; Elixir
 (setq lsp-clients-elixir-server-executable "elixir-ls")
@@ -66,9 +78,20 @@
   :config
   (global-wakatime-mode +1))
 
+;; Ivy configuration
+;; (use-package! ivy
+;;   :config
+;;   (setq ivy-re-builders-alist
+;;         '((counsel-rg . ivy--regex-plus)
+;;           (counsel-projectile-rg . ivy--regex-plus)
+;;           (counsel-ag . ivy--regex-plus)
+;;           (counsel-projectile-ag . ivy-regex-plus)
+;;           (swiper . ivy--regex-plus)
+;;           (t . ivy--regex-fuzzy))))
+
 ;; Custom keybinds
-(map! :leader
-      :desc "Find file using FZF" "SPC" #'counsel-fzf)
+;; (map! :leader
+;;       :desc "Find file using FZF" "SPC" #'counsel-fzf)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
