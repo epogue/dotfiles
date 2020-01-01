@@ -10,6 +10,8 @@ export PROJECTS=~/Projects
 # Default WPDC composer
 export WPDC_COMPOSER=servers
 
+# Fetch NPM_TOKEN from Keychain
+export NPM_TOKEN=$(security find-generic-password -w -l NPM_TOKEN)
 
 # FZF default command
 export FZF_DEFAULT_COMMAND='ag -g ""'

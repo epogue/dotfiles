@@ -66,6 +66,17 @@
                      dir))
                  subdirs))))
 
+;; Counsel
+(defun counsel-projectile-fzf (dir)
+  (counsel-fzf "" dir ""))
+
+(after! counsel-projectile
+  (counsel-projectile-modify-action
+    'counsel-projectile-switch-project-action
+    '((add ("f" counsel-projectile-fzf counsel-fzf) 1)
+      (default 1))))
+
+
 ;; Elixir
 (setq lsp-clients-elixir-server-executable "elixir-ls")
 (set-docsets! 'elixir-mode "Elixir")
@@ -90,8 +101,8 @@
 ;;           (t . ivy--regex-fuzzy))))
 
 ;; Custom keybinds
-;; (map! :leader
-;;       :desc "Find file using FZF" "SPC" #'counsel-fzf)
+(map! :leader
+      :desc "Find file using FZF" "SPC" #'counsel-fzf)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
