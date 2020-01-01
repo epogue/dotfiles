@@ -13,6 +13,9 @@ export WPDC_COMPOSER=servers
 # Fetch NPM_TOKEN from Keychain
 export NPM_TOKEN=$(security find-generic-password -w -l NPM_TOKEN)
 
+# Fetch NPM_TOKEN from Keychain
+export WAKATIME_API_KEY=$(security find-generic-password -w -l WAKATIME_API_KEY)
+
 # FZF default command
 export FZF_DEFAULT_COMMAND='ag -g ""'
 

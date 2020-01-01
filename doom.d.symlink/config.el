@@ -84,7 +84,7 @@
 ;; Wakatime config
 (use-package! wakatime-mode
   :init
-  (setq wakatime-api-key "0cbec2ee-baf8-4c4f-8622-c545bdc0d359"
+  (setq wakatime-api-key (getenv "WAKATIME_API_KEY")
         wakatime-cli-path "/usr/local/bin/wakatime")
   :config
   (global-wakatime-mode +1))
