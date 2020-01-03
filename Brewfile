@@ -19,7 +19,6 @@ brew "openssl"
 brew "the_silver_searcher"
 brew "ripgrep"
 brew "grc"
-brew "hub"
 brew "thefuck"
 
 brew "postgresql", restart_service: true
@@ -32,10 +31,14 @@ brew "elixir"
 brew "spark"
 brew "tmux"
 brew "neovim"
-brew "heroku"
 brew "imagemagick"
 brew "watchman"
+
+# Service CLIs
+brew "hub"
+brew "heroku"
 brew "aws-rotate-key"
+brew "terraform"
 
 cask "1password"
 cask "alfred"
