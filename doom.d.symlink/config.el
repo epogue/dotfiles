@@ -46,6 +46,7 @@
         :n "M-k" #'org-metaup)
   (setq org-directory "~/Documents/Notes/"
         org-agenda-files (ignore-errors (directory-files org-directory t "\\.org$" t))
+        org-agenda-dim-blocked-tasks 'dimmed
         org-todo-keywords '((sequence "TODO(t)" "STRT(s)" "WAIT(w)" "DONE(d)"))))
 
 ;; If you want to change the style of line numbers, change this to `relative' or
@@ -80,6 +81,13 @@
 ;; Elixir
 (setq lsp-clients-elixir-server-executable "elixir-ls")
 (set-docsets! 'elixir-mode "Elixir")
+
+;; Web mode
+(defun custom-web-mode-hook ()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+(add-hook 'web-mode-hook 'custom-web-mode-hook)
 
 ;; Wakatime config
 (use-package! wakatime-mode
