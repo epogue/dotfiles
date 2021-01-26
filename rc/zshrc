@@ -1,0 +1,27 @@
+BREW_DIR=$(brew --prefix)
+DOTFILES_DIR="$HOME/.dotfiles"
+
+# Load asdf and its autocompletions
+. $HOME/.asdf/asdf.sh
+
+# Load z
+. $BREW_DIR/etc/profile.d/z.sh
+
+# Load fzf
+[ -f "$DOTFILES_DIR/fzf/fzf.zsh" ] && source "$DOTFILES_DIR/fzf/fzf.zsh"
+
+# Pure
+fpath=($HOME/.zsh/pure $fpath)
+
+# Functions
+fpath=($HOME/.zsh/functions $fpath)
+
+# Load completion functions
+fpath=($ASDF_DIR/completions $fpath)
+autoload -Uz compinit
+compinit
+
+# Load prompt
+autoload -U promptinit; promptinit
+prompt pure
+

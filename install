@@ -1,0 +1,46 @@
+#! /usr/bin/env bash
+
+set -e
+DOTFILES_ROOT=$(pwd -P)
+
+step () {
+  echo ''
+  printf "\r\033[00;34m==> $1...\033[0m\n"
+}
+
+if ! command -v brew > /dev/null; then
+  step "Installing Homebrew"
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+else
+  step "Updating Homebrew"
+  brew update
+fi
+
+step "Installing Homebrew bundle"
+brew bundle
+
+# Install asdf
+if ! command -v asdf > /dev/null; then
+  step "Installing asdf"
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+else
+  step "Updating asdf"
+  asdf update
+fi
+
+# Install pure prompt
+mkdir -p "$HOME/.zsh"
+if [ ! -d "$HOME/.zsh/pure" ]; then
+  step "Installing pure prompt"
+  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+else
+  step "Updating pure prompt"
+  cd "$HOME/.zsh/pure" && git pull
+  cd "$DOTFILES_ROOT"
+fi
+
+step "Symlinking dotfiles"
+rcup -v -d rc 
+
+step "Setting macOS defaults"
+. macos/set-defaults.sh
