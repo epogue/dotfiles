@@ -1,0 +1,9 @@
+[alias]
+	cm = commit -S
+	co = checkout
+	s = status
+	br = branch
+	unstage = reset HEAD --
+[user]
+	name = Elliott Pogue
+	email = epogue@gmail.com
