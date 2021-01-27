@@ -3,7 +3,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
-
 brew "autoconf"
 brew "aws-rotate-key"
 brew "coreutils"
@@ -19,7 +18,6 @@ brew "terraform@0.11", link: true
 brew "youtube-dl"
 brew "z"
 brew "heroku/brew/heroku"
-
 cask "1password"
 cask "alfred"
 cask "cleanshot"
@@ -28,6 +26,7 @@ cask "discord"
 cask "docker"
 cask "firefox"
 cask "gpg-suite"
+cask "iterm2"
 cask "linear-linear"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
@@ -41,7 +40,6 @@ cask "tableplus"
 cask "viscosity"
 cask "visual-studio-code"
 cask "zoom"
-
 mas "1Blocker", id: 1107421413
 mas "Amphetamine", id: 937984704
 mas "Codye", id: 1516894961
