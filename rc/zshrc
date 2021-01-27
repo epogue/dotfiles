@@ -1,14 +1,17 @@
 BREW_DIR=$(brew --prefix)
 DOTFILES_DIR="$HOME/.dotfiles"
 
-# Load asdf and its autocompletions
-. $HOME/.asdf/asdf.sh
+# Load grc aliases
+[[ -s "$BREW_DIR/etc/grc.zsh" ]] && source "$BREW_DIR/etc/grc.zsh"
+
+# Load asdf
+[[ -f "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
 
 # Load z
-. $BREW_DIR/etc/profile.d/z.sh
+[[ -f "$BREW_DIR/etc/profile.d/z.sh" ]] && source $BREW_DIR/etc/profile.d/z.sh
 
 # Load fzf
-. "$DOTFILES_DIR/fzf/fzf.zsh"
+[[ -f "$DOTFILES_DIR/fzf/fzf.zsh" ]] && source "$DOTFILES_DIR/fzf/fzf.zsh"
 
 # Pure
 fpath=($HOME/.zsh/pure $fpath)
