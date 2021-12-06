@@ -42,6 +42,7 @@ cask "tableplus"
 cask "viscosity"
 cask "visual-studio-code"
 cask "zoom"
+cask "xcodes"
 mas "1Blocker", id: 1107421413
 mas "Amphetamine", id: 937984704
 mas "Codye", id: 1516894961
@@ -56,4 +57,3 @@ mas "Spark", id: 1176895641
 mas "Tampermonkey", id: 1482490089
 mas "Things", id: 904280696
 mas "Twitter", id: 1482454543
-mas "Xcode", id: 497799835

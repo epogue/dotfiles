@@ -1,5 +1,17 @@
+PATH="$HOME/bin:$HOME/go/bin:/opt/homebrew/bin${PATH:+:${PATH}}"
+
 BREW_DIR=$(brew --prefix)
 DOTFILES_DIR="$HOME/.dotfiles"
+
+# Load aws env
+# . "$DOTFILES_DIR/aws/env.zsh"
+export AWS_PROFILE=saml
+
+# Load tokens
+export NPM_TOKEN=$(security find-generic-password -w -l NPM_TOKEN)
+
+# Set up fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Load grc aliases
 [[ -s "$BREW_DIR/etc/grc.zsh" ]] && source "$BREW_DIR/etc/grc.zsh"
@@ -10,8 +22,11 @@ DOTFILES_DIR="$HOME/.dotfiles"
 # Load z
 [[ -f "$BREW_DIR/etc/profile.d/z.sh" ]] && source $BREW_DIR/etc/profile.d/z.sh
 
+# Load custom aliases
+[[ -f "$HOME/.zsh_aliases" ]] && source $HOME/.zsh_aliases
+
 # Load fzf
-[[ -f "$DOTFILES_DIR/fzf/fzf.zsh" ]] && source "$DOTFILES_DIR/fzf/fzf.zsh"
+. "$DOTFILES_DIR/fzf/fzf.zsh"
 
 # Pure
 fpath=($HOME/.zsh/pure $fpath)
@@ -27,4 +42,4 @@ compinit
 # Load prompt
 autoload -U promptinit; promptinit
 prompt pure
-
+alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
