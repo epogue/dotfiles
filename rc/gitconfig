@@ -7,9 +7,9 @@
 [user]
 	name = Elliott Pogue
 	email = epogue@gmail.com
-	signingkey = F895770C3801264A
+	signingkey = 993F7D9A21621BE9
 [core]
-	editor = "code --wait"
+	editor = "vi"
 [commit]
 	gpgsign = true
 [pull]
