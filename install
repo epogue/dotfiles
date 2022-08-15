@@ -2,13 +2,13 @@
 
 set -e
 DOTFILES_ROOT=$(pwd -P)
+ASDF_VERSION="v0.10.2"
 
 step () {
   echo ''
   printf "\r\033[00;34m==> $1...\033[0m\n"
 }
 
-<<<<<<< Updated upstream
 if [ -d /opt/homebrew/bin ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
@@ -28,7 +28,7 @@ brew bundle || echo "homebrew exited with $?" >&2
 # Install asdf
 if ! command -v asdf > /dev/null; then
   step "Installing asdf"
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
   . ~/.asdf/asdf.sh
 else
   step "Updating asdf"
