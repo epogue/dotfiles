@@ -2,7 +2,6 @@
 
 set -e
 DOTFILES_ROOT=$(pwd -P)
-ASDF_VERSION="v0.10.2"
 
 step () {
   echo ''
@@ -25,14 +24,13 @@ fi
 step "Installing Homebrew bundle"
 brew bundle || echo "homebrew exited with $?" >&2
 
-# Install asdf
-if ! command -v asdf > /dev/null; then
-  step "Installing asdf"
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
-  . ~/.asdf/asdf.sh
+# Install mise
+if ! command -v mise > /dev/null; then
+  step "Installing mise"
+  curl https://mise.run | sh
 else
-  step "Updating asdf"
-  asdf update || echo "asdf exited with $?" >&2
+  step "Updating mise"
+  mise self-update -y || echo "asdf exited with $?" >&2
 fi
 
 # Install pure prompt

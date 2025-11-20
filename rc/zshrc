@@ -1,4 +1,4 @@
-PATH="$HOME/bin:$HOME/go/bin:/opt/homebrew/bin${PATH:+:${PATH}}"
+PATH="$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:~/.bun/bin:${PATH:+:${PATH}}"
 
 BREW_DIR=$(brew --prefix)
 DOTFILES_DIR="$HOME/.dotfiles"
@@ -7,10 +7,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Load grc aliases
-[[ -s "$BREW_DIR/etc/grc.zsh" ]] && source "$BREW_DIR/etc/grc.zsh"
-
-# Load asdf
-[[ -f "$HOME/.asdf/asdf.sh" ]] && source $HOME/.asdf/asdf.sh
+# [[ -s "$BREW_DIR/etc/grc.zsh" ]] && source "$BREW_DIR/etc/grc.zsh"
 
 # Load z
 [[ -f "$BREW_DIR/etc/profile.d/z.sh" ]] && source $BREW_DIR/etc/profile.d/z.sh
@@ -20,6 +17,13 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Load fzf
 . "$DOTFILES_DIR/fzf/fzf.zsh"
+
+# Load gcloud
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+# mise
+eval "$(/Users/epogue/.local/bin/mise activate zsh)"
 
 # Pure
 fpath=($HOME/.zsh/pure $fpath)
@@ -35,3 +39,30 @@ compinit
 # Load prompt
 autoload -U promptinit; promptinit
 prompt pure
+
+# bun completions
+[ -s "/Users/epogue/.bun/_bun" ] && source "/Users/epogue/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# cargo/rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/epogue/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# pnpm
+export PNPM_HOME="/Users/epogue/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Added by Antigravity
+export PATH="/Users/epogue/.antigravity/antigravity/bin:$PATH"

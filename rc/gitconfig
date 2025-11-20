@@ -4,6 +4,9 @@
 	s = status
 	br = branch
 	unstage = reset HEAD --
+	fomo = !git fetch origin main && git rebase origin/main
+	fomoma = !git fetch origin master && git rebase origin/master
+	resign = rebase --exec 'git commit --amend --no-edit -S'
 [user]
 	name = Elliott Pogue
 	email = epogue@gmail.com
@@ -14,3 +17,8 @@
 	gpgsign = true
 [pull]
 	ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
