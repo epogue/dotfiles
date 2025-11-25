@@ -1,6 +1,7 @@
 PATH="$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:~/.bun/bin:${PATH:+:${PATH}}"
 
-BREW_DIR=$(brew --prefix)
+# Hardcoded for performance (avoids subprocess on every shell start)
+BREW_DIR="/opt/homebrew"
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # Set up fd as the default source for fzf
@@ -19,22 +20,28 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 . "$DOTFILES_DIR/fzf/fzf.zsh"
 
 # Load gcloud
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+source "$BREW_DIR/share/google-cloud-sdk/path.zsh.inc"
+source "$BREW_DIR/share/google-cloud-sdk/completion.zsh.inc"
 
 # mise
 eval "$(/Users/epogue/.local/bin/mise activate zsh)"
 
-# Pure
-fpath=($HOME/.zsh/pure $fpath)
+# Consolidate all fpath modifications before compinit
+fpath=(
+  $HOME/.zsh/pure
+  $HOME/.zsh/functions
+  $HOME/.docker/completions
+  $BREW_DIR/share/zsh/site-functions
+  $fpath
+)
 
-# Functions
-fpath=($HOME/.zsh/functions $fpath)
-
-# Load completion functions
-fpath=($ASDF_DIR/completions $fpath)
+# Cached compinit - only regenerate once per day
 autoload -Uz compinit
-compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 # Load prompt
 autoload -U promptinit; promptinit
@@ -49,12 +56,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # cargo/rust
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/epogue/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 
 # pnpm
 export PNPM_HOME="/Users/epogue/Library/pnpm"
