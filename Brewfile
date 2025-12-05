@@ -2,10 +2,6 @@ tap "auth0/auth0-cli"
 tap "derailed/k9s"
 tap "fluxcd/tap"
 tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "homebrew/services"
 tap "oven-sh/bun"
 tap "stripe/stripe-cli"
 tap "twilio/brew"
@@ -28,7 +24,6 @@ brew "coreutils"
 brew "docutils"
 brew "erlang"
 brew "elixir"
-brew "fluxctl"
 brew "harfbuzz"
 brew "pango"
 brew "fontforge"
@@ -59,7 +54,6 @@ brew "rcm"
 brew "rustup"
 brew "sourcekitten"
 brew "wxwidgets"
-brew "youtube-dl"
 brew "z"
 brew "auth0/auth0-cli/auth0"
 brew "derailed/k9s/k9s"
@@ -71,10 +65,10 @@ brew "xcodesorg/made/xcodes", link: false
 cask "1password"
 cask "1password-cli"
 cask "cleanshot"
+cask "claude-code"
 cask "codex"
 cask "discord"
 cask "docker-desktop"
-cask "expo-orbit"
 cask "firefox"
 cask "fontforge-app"
 cask "gcloud-cli"
@@ -89,23 +83,21 @@ cask "sanesidebuttons"
 cask "slack"
 cask "tableplus"
 cask "visual-studio-code"
-cask "visual-studio-code@insiders"
+cask "cursor"
+cask "visual-studio-code"
+cask "thebrowsercompany-dia"
 cask "xcodes-app"
 cask "zoom"
+cask "zed"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
 mas "Fantastical", id: 975937182
 mas "Hand Mirror", id: 1502839586
 mas "Hush", id: 1544743900
 mas "Keynote", id: 409183694
-mas "LG Screen Manager", id: 1142051783
-mas "Mapper", id: 1589391989
 mas "Mela", id: 1568924476
 mas "Numbers", id: 409203825
-mas "Okta Extension App", id: 1439967473
-mas "Okta Verify", id: 490179405
 mas "Pages", id: 409201541
-mas "Tampermonkey", id: 6738342400
 mas "Things", id: 904280696
 mas "Wipr", id: 1662217862
 vscode "ahmadawais.shades-of-purple"

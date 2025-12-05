@@ -10,7 +10,7 @@
 [user]
 	name = Elliott Pogue
 	email = epogue@gmail.com
-	signingkey = 993F7D9A21621BE9
+	signingkey = A7C943D2E1AA68FD
 [core]
 	editor = "vi"
 [commit]
