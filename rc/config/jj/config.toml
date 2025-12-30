@@ -1,5 +1,8 @@
 #:schema https://docs.jj-vcs.dev/latest/config-schema.json
 
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+
 [user]
 name = "Elliott Pogue"
 email = "epogue@gmail.com"
