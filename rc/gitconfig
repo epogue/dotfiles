@@ -24,3 +24,7 @@
 	required = true
 [gpg]
 	program = /opt/homebrew/bin/gpg
+
+
+[includeIf "gitdir:~/Code/theoria/"]
+	path = ~/.gitconfig-theoria

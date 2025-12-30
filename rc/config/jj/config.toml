@@ -1,0 +1,13 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Elliott Pogue"
+email = "epogue@gmail.com"
+
+[ui]
+editor = "vi"
+
+[[--scope]]
+--when.repositories = ["~/Code/theoria"]
+[--scope.user]
+email = "pogue@theoriamedical.com"
