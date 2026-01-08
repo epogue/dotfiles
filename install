@@ -30,7 +30,7 @@ if ! command -v mise > /dev/null; then
   curl https://mise.run | sh
 else
   step "Updating mise"
-  mise self-update -y || echo "asdf exited with $?" >&2
+  mise self-update -y || echo "mise exited with $?" >&2
 fi
 
 # Install pure prompt
