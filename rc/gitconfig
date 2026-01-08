@@ -11,6 +11,8 @@
 	name = Elliott Pogue
 	email = epogue@gmail.com
 	signingkey = A7C943D2E1AA68FD
+[github]
+	user = epogue
 [core]
 	editor = "vi"
 [commit]
@@ -24,6 +26,8 @@
 	required = true
 [gpg]
 	program = /opt/homebrew/bin/gpg
+[init]
+	defaultBranch = main
 
 
 [includeIf "gitdir:~/Code/theoria/"]
