@@ -31,3 +31,5 @@
 
 [includeIf "gitdir:~/Code/theoria-gitlab/"]
 	path = ~/.gitconfig-theoria
+[rerere]
+	enabled = true

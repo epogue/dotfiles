@@ -47,5 +47,9 @@ fi
 step "Symlinking dotfiles"
 rcup -v -d rc 
 
+step "Symlinking agent instructions"
+ln -sf "$DOTFILES_ROOT/agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+ln -sf "$DOTFILES_ROOT/agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
+
 step "Setting macOS defaults"
 . macos/set-defaults.sh

@@ -1,7 +1,7 @@
-# Claude Code Agent Profile
+# Agent Profile
 
-**Purpose:** Operate Claude Code tasks in a repo while honoring user preferences and house style.
-**When Claude reads this:** On task initialization and before major decisions; re-skim when requirements shift.
+**Purpose:** Operate agent tasks in a repo while honoring user preferences and house style.
+**When an agent reads this:** On task initialization and before major decisions; re-skim when requirements shift.
 **Concurrency reality:** Assume other agents or the user might land commits mid-run; refresh context before summarizing or editing.
 
 ## Quick Obligations
