@@ -33,17 +33,6 @@ else
   mise self-update -y || echo "mise exited with $?" >&2
 fi
 
-# Install pure prompt
-mkdir -p "$HOME/.zsh"
-if [ ! -d "$HOME/.zsh/pure" ]; then
-  step "Installing pure prompt"
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-else
-  step "Updating pure prompt"
-  cd "$HOME/.zsh/pure" && git pull
-  cd "$DOTFILES_ROOT"
-fi
-
 step "Symlinking dotfiles"
 rcup -v -d rc 
 

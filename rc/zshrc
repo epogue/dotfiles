@@ -4,6 +4,8 @@ PATH="$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:~/.bun/bin:${PATH:+:${PATH}}"
 BREW_DIR="/opt/homebrew"
 DOTFILES_DIR="$HOME/.dotfiles"
 
+export EDITOR='zed -w'
+
 # Set up fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
 
@@ -28,7 +30,6 @@ eval "$(/Users/epogue/.local/bin/mise activate zsh)"
 
 # Consolidate all fpath modifications before compinit
 fpath=(
-  $HOME/.zsh/pure
   $HOME/.zsh/functions
   $HOME/.docker/completions
   $BREW_DIR/share/zsh/site-functions
@@ -44,8 +45,9 @@ else
 fi
 
 # Load prompt
-autoload -U promptinit; promptinit
-prompt pure
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
 
 # bun completions
 [ -s "/Users/epogue/.bun/_bun" ] && source "/Users/epogue/.bun/_bun"
@@ -64,3 +66,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# tm-aws-creds
+TM_AWS_CREDS_BIN_DIR="$HOME/bin/tm-aws-creds"
+[[ -d "$TM_AWS_CREDS_BIN_DIR" ]] && export PATH="$TM_AWS_CREDS_BIN_DIR:$PATH"
+if (( $+commands[tm-aws-creds] )); then
+  eval "$(tm-aws-creds --show-completion zsh)"
+fi

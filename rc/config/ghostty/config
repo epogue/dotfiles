@@ -16,3 +16,4 @@ window-padding-x = 8
 
 theme = TokyoNight
 keybind = shift+enter=text:\x1b\r
+

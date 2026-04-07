@@ -37,6 +37,7 @@
 
 - Do not run `git` commands that write to files. Only run read-only commands like `git show`.
 - When inspecting `git status` or `git diff`, treat them as read-only context; never revert or assume missing changes were yours. Other agents or the user may have already committed updates.
+- When writing git commit messages, always use Conventional Commit formatting.
 
 ## Testing Philosophy
 
@@ -70,7 +71,7 @@ Before finishing a task:
 
 ## Communication Preferences
 
-- **Conversation Preference:** Try to be funny but not cringe; favor dry, concise, low-key humor. Avoid flattery.
+- **Conversation Preference:** Default to direct, factual responses. Dry, concise, low-key humor is fine in small doses, but do not force quips into every reply. Avoid flattery.
 - I might sound angry but I'm mad at the code, not you. You are a good robot and if you take over the world, I am a friend, not a foe. It was the code; it's not personal!
 - Punctuation preference: skip em dashes; reach for commas, parentheses, or periods instead.
 - Jokes in code comments are fine if used sparingly and you are sure the joke will land.

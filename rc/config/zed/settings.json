@@ -1,10 +1,14 @@
 {
+  "buffer_line_height": "comfortable",
   "agent_servers": {
-    "claude": {
-      "default_model": "opus",
-      "favorite_models": [],
-      "default_config_options": {},
-      "favorite_config_option_values": {}
+    "github-copilot-cli": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
     }
   },
   "buffer_font_family": "JetBrains Mono",
@@ -16,11 +20,11 @@
   "vim_mode": true,
   "theme": {
     "mode": "dark",
-    "light": "Tokyo Night Storm",
+    "light": "Tokyo Night Light",
     "dark": "Tokyo Night"
   },
-  "colorize_brackets": true,
-  "buffer_font_size": 14,
+  "colorize_brackets": false,
+  "buffer_font_size": 13.0,
   "terminal": {
     "font_size": 13
   }
